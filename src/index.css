@@ -1,10 +1,125 @@
-/* body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;}
+/* Modern Reset */
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+/*Background Image*/
+
+/* html {
+  background: url(https://www.newscaststudio.com/wp-content/uploads/2018/03/f1-logo.jpg)
+    no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 } */
+
+/* Remove default padding */
+ul[class],
+ol[class] {
+  padding: 0;
+}
+
+ul {
+  padding: 0;
+  list-style-type: none;
+}
+
+/* Remove default margin */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+ul[class],
+ol[class],
+li {
+  margin: 0;
+  margin-top: 16px;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  scroll-behavior: smooth;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+  /* background-color: rgb(214, 210, 210); */
+}
+
+/* Make images easier to work with */
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  border-radius: 8px;
+  margin-right: 8px;
+}
+
+.light-shadow {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12), 0 3px 9px rgba(0, 0, 0, 0.08);
+}
+
+.grid-container {
+  min-width: 100vw;
+  min-height: 100vh;
+  display: grid;
+  grid-template:
+    "header header header header header" 75px
+    ". left-aside main right-aside ." 1fr 
+    "footer footer footer footer footer" 75px /
+    0.125fr 1fr 2fr 1fr 0.125fr;
+  gap: 5px;
+}
+
+.header {
+  grid-area: header;
+  background-color: rgb(246, 228, 220);
+  border: 1px dotted black;
+}
+
+.left-aside {
+  grid-area: left-aside;
+  background-color: rgb(199, 227, 245);
+  border: 1px dotted black;
+}
+
+.main {
+  grid-area: main;
+  background-color: rgb(204, 240, 204);
+  border: 1px dotted black;
+}
+
+.right-aside {
+  grid-area: right-aside;
+  background-color: rgb(176, 231, 228);
+  border: 1px dotted black;
+}
+
+.footer {
+  grid-area: footer;
+  background-color: rgb(223, 223, 128);
+  border: 1px dotted black;
+}
+
+.border-for-li {
+  border: 1px solid rgb(235, 225, 225);
+  border-radius: 8px;
+  padding: 8px;
+}
+.two-column-grid-expand__right {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 16px;
+}
