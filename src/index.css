@@ -70,6 +70,26 @@ select {
 .light-shadow {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12), 0 3px 9px rgba(0, 0, 0, 0.08);
 }
+.form-stack > * + * {
+  margin-top: 0.5rem;
+}
+
+.form-stack > label {
+  display: block;
+}
+
+.form-stack > input {
+  width: auto;
+}
+.form-stack {
+  padding: 8px;
+}
+
+.center {
+  border: 1px solid rgb(235, 225, 225);
+  border-radius: 4px;
+  padding: 8px;
+}
 
 .grid-container {
   min-width: 100vw;
@@ -77,8 +97,7 @@ select {
   display: grid;
   grid-template:
     "header header header header header" 75px
-    ". left-aside main right-aside ." 1fr 
-    "footer footer footer footer footer" 75px /
+    ". left-aside main right-aside ." 1fr /
     0.125fr 1fr 2fr 1fr 0.125fr;
   gap: 5px;
 }
@@ -86,40 +105,73 @@ select {
 .header {
   grid-area: header;
   background-color: rgb(246, 228, 220);
-  border: 1px dotted black;
+  /* border: 1px dotted black; */
 }
 
 .left-aside {
   grid-area: left-aside;
   background-color: rgb(199, 227, 245);
-  border: 1px dotted black;
+  /* border: 1px dotted black; */
 }
 
 .main {
   grid-area: main;
   background-color: rgb(204, 240, 204);
-  border: 1px dotted black;
+  /* border: 1px dotted black; */
 }
 
 .right-aside {
   grid-area: right-aside;
   background-color: rgb(176, 231, 228);
-  border: 1px dotted black;
+  /* border: 1px dotted black; */
 }
 
-.footer {
+/* .footer {
   grid-area: footer;
   background-color: rgb(223, 223, 128);
   border: 1px dotted black;
-}
+} */
 
 .border-for-li {
-  border: 1px solid rgb(235, 225, 225);
+  border: 1px solid rgb(17, 1, 1);
   border-radius: 8px;
+  width: 100%;
   padding: 8px;
+  justify-self: center;
+  cursor: pointer;
+  transition: all 300ms;
+}
+.border-for-li:hover {
+  transform: scale(1.05);
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 .two-column-grid-expand__right {
   display: grid;
   grid-template-columns: 1fr auto;
-  gap: 16px;
+  gap: 10px;
+}
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 275px);
+  gap: 15px;
+  justify-content: center;
+  justify-items: center;
+  padding: 24px 0;
+  margin-bottom: 24px;
+}
+
+
+
+.card--text {
+  margin: 0.2rem;
+  padding: 1rem;
+
+  border-radius: 5px;
+}
+
+.card--img {
+  display: block;
+  margin: 0 auto;
+
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
 }
