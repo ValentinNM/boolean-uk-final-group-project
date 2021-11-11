@@ -3,22 +3,26 @@ import CreateTrainerForm from "./components/CreateTrainerForm";
 import ListOfClasses from "./components/ListOfClasses";
 import ListOfMembers from "./components/ListOfMembers";
 import ListOfTrainers from "./components/ListOfTrainers";
+import Header from "./components/Header"
 
 export default function App() {
   const [trainers, setTrainers] = useState([])
   const [classes, setClasses] = useState([])
   const [members, setMembers] = useState([])
 
+// const REACT_APP_API_URL = process.env.REACT_APP_API_URL;
+
   console.log("Inside App State: ", {
     trainers,
     classes,
     members
   })
+
   useEffect (() => {
     fetch("http://localhost:3030/classes")
     .then((res) => res.json())
     .then((classData) => {
-      setClasses(classData.data);
+      setClasses(classData);
       console.log("Inside Classes Get Fetch: ", classData)
     });
   }, [])
@@ -32,17 +36,20 @@ export default function App() {
     });
   }, [])
 
-     useEffect (() => {
+    useEffect (() => {
     fetch("http://localhost:3030/trainers")
     .then((res) => res.json())
     .then((trainerData) => {
-      setTrainers(trainerData.data);
+      setTrainers(trainerData);
       console.log("Inside Trainer Get Fetch: ", trainerData)
     });
   }, [])
+
   return (
     <div className="grid-container">
-      <header className="header"></header>
+      <header className="header">
+        < Header/>
+      </header>
 
         <aside className="left-aside">
         <ListOfTrainers trainers={trainers}/>
