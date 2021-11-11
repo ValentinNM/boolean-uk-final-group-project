@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import CreateTrainerForm from "./components/CreateTrainerForm";
 import ListOfClasses from "./components/ListOfClasses";
 import ListOfMembers from "./components/ListOfMembers";
 import ListOfTrainers from "./components/ListOfTrainers";
@@ -31,20 +32,21 @@ export default function App() {
     });
   }, [])
 
-     // useEffect (() => {
-  //   fetch("http://localhost:3030/trainers")
-  //   .then((res) => res.json())
-  //   .then((trainerData) => {
-  //     setMembers(trainerData);
-  //     console.log("Inside Trainer Get Fetch: ", trainerData)
-  //   });
-  // }, [])
+     useEffect (() => {
+    fetch("http://localhost:3030/trainers")
+    .then((res) => res.json())
+    .then((trainerData) => {
+      setTrainers(trainerData.data);
+      console.log("Inside Trainer Get Fetch: ", trainerData)
+    });
+  }, [])
   return (
     <div className="grid-container">
       <header className="header"></header>
 
         <aside className="left-aside">
         <ListOfTrainers trainers={trainers}/>
+        <CreateTrainerForm trainers={trainers} setTrainers={setTrainers} />
         </aside>
 
         <main className="main">
@@ -55,7 +57,6 @@ export default function App() {
           <ListOfMembers members={members} />
         </aside>
 
-      <footer className="footer"></footer>
     </div>
   );
 }
