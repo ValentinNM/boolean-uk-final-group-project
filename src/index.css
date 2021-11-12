@@ -1,26 +1,18 @@
 /* Modern Reset */
-
+@import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+P+One&family=Nunito:wght@400&family=Red+Hat+Mono&display=swap');
 /* Box sizing rules */
 *,
 *::before,
 *::after {
   box-sizing: border-box;
+  margin: 0;
+  font-family: 'Nunito', sans-serif;
+  /* font-family: 'Mochiy Pop P One', sans-serif; */
+  /* font-family: 'Red Hat Mono', monospace; */
 }
-/*Background Image*/
 
-/* html {
-  background: url(https://www.newscaststudio.com/wp-content/uploads/2018/03/f1-logo.jpg)
-    no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-} */
-
-/* Remove default padding */
-ul[class],
-ol[class] {
-  padding: 0;
+h2{
+  text-align: center;
 }
 
 ul {
@@ -28,27 +20,32 @@ ul {
   list-style-type: none;
 }
 
-/* Remove default margin */
-body,
-h1,
-h2,
-h3,
-h4,
-p,
-ul[class],
-ol[class],
-li {
-  margin: 0;
-  margin-top: 16px;
-}
-
 /* Set core body defaults */
+
 body {
-  min-height: 100vh;
+  /* max-height: 100vh; */
   scroll-behavior: smooth;
   text-rendering: optimizeSpeed;
   line-height: 1.5;
-  /* background-color: rgb(214, 210, 210); */
+}
+
+.body::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+.body::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+/* Handle */
+.body::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+/* Handle on hover */
+.body::-webkit-scrollbar-thumb:hover {
+  background: #555; 
 }
 
 /* Make images easier to work with */
@@ -64,7 +61,6 @@ textarea,
 select {
   font: inherit;
   border-radius: 8px;
-  margin-right: 8px;
 }
 
 .light-shadow {
@@ -92,47 +88,120 @@ select {
 }
 
 .grid-container {
-  min-width: 100vw;
-  min-height: 100vh;
+  /* min-width: 100vw; => maybe to be removed */ 
+  max-height: 100vh;
   display: grid;
   grid-template:
     "header header header header header" 75px
     ". left-aside main right-aside ." 1fr /
     0.125fr 1fr 2fr 1fr 0.125fr;
   gap: 5px;
+  /*
+  => SPARES <=
+  background: linear-gradient(to right, #2c3e50, #bdc3c7);
+  background: linear-gradient(to right, #FFFFFF, #6DD5FA, #2980B9); 
+  background: linear-gradient(to right, #E1F5C4, #EDE574);
+  */
+background: linear-gradient(to right, #7AA1D2, #DBD4B4, #CC95C0);
+
 }
 
 .header {
   grid-area: header;
-  background-color: rgb(246, 228, 220);
   /* border: 1px dotted black; */
 }
 
+.logo { 
+  max-width: 40px;
+}
+
+/* LEFT ASIDE => TRAINERS */
 .left-aside {
   grid-area: left-aside;
-  background-color: rgb(199, 227, 245);
   /* border: 1px dotted black; */
 }
 
+.trainers-list {
+  display: grid;
+  max-height: 65vh ;
+  overflow-x: hidden;
+  overflow-y: auto;
+  margin-bottom: 15px;
+  gap:10px;
+}
+
+.trainers-list::-webkit-scrollbar{ /* removes the scrollbar, though still scrolable */
+ display: none;
+}
+
+.add-trainer{
+  display: grid;
+  max-height: 30vh ;
+}
+
+.grid-gap{
+  display: grid;
+  justify-content: end;
+}
+
+
+/* CENTRE */
 .main {
   grid-area: main;
-  background-color: rgb(204, 240, 204);
-  /* border: 1px dotted black; */
 }
 
+.classes-list{
+  display: grid;
+  max-height: 87vh ;
+  overflow-x: hidden;
+  overflow-y: auto;
+  /* gap:10px; */
+}
+
+.classes-list::-webkit-scrollbar{ /* removes the scrollbar, though still scrolable */
+  display: none;
+ }
+ .one-class-dashboard-buttons{
+   gap: 10px;
+   display: inline-flex;
+   align-items: center;
+   justify-content: flex-end;
+  }
+   
+/* RIGHT ASIDE => MEMBERS LIST */
 .right-aside {
   grid-area: right-aside;
-  background-color: rgb(176, 231, 228);
   /* border: 1px dotted black; */
 }
+.members-list { 
+  display: grid;
+  max-height: 87vh ;
+  overflow-x: hidden;
+  overflow-y: auto;
+  margin-bottom: 15px;
+  gap:10px;
+}
 
-/* .footer {
-  grid-area: footer;
-  background-color: rgb(223, 223, 128);
-  border: 1px dotted black;
-} */
+.members-list::-webkit-scrollbar{ /* removes the scrollbar, though still scrolable */
+  display: none;
+ }
+ 
+ /* REUSABLE */
+ .align-end{
+   align-self: end;
+ }
 
 .border-for-li {
+  border: 1px solid rgb(17, 1, 1);
+  border-radius: 8px;
+  width: 100%;
+  padding: 8px;
+  justify-self: center;
+  cursor: pointer;
+  transition: all 300ms;
+}
+
+.centre-card {
   border: 1px solid rgb(17, 1, 1);
   border-radius: 8px;
   width: 100%;
@@ -150,17 +219,21 @@ select {
   grid-template-columns: 1fr auto;
   gap: 10px;
 }
+.two-row-grid {
+  display: grid;
+  /* grid-template-columns: 1fr auto; */
+  grid-template-rows: 1fr auto;
+  gap: 5px;
+}
 .cards {
   display: grid;
   grid-template-columns: repeat(auto-fill, 275px);
   gap: 15px;
   justify-content: center;
   justify-items: center;
-  padding: 24px 0;
+  /* padding: 24px 0; */
   margin-bottom: 24px;
 }
-
-
 
 .card--text {
   margin: 0.2rem;
@@ -174,4 +247,12 @@ select {
   margin: 0 auto;
 
   box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+}
+
+.padding{ 
+  padding: 10px;
+}
+
+.padding-left{
+  padding-left: 10x;
 }

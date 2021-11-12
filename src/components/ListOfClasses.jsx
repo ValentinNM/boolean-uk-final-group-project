@@ -1,23 +1,34 @@
+import Button from '@mui/material/Button';
+import { red } from '@mui/material/colors';
+
 export default function ListOfClasses(props) {
+  
   return (
     <>
-      <h2>List Of Classes</h2>
-      <ul className="cards">
-        {props.classes.map((classe, index) => {
+      <h2 className="padding-left"> List Of Classes</h2>
+      <ul className="cards padding classes-list">
+        {props.classes.map((oneClass, index) => {
           const {
             className,
             classType,
             classStatus,
             classStartDate,
             duration,
-          } = classe;
+          } = oneClass;
           return (
-            <li key={index} className=" border-for-li">
-              <h3>Name of Class: {className}</h3>
-              <p>Type of Class: {classType}</p>
+            // centre-card  => calss to replace&EDIT for the centre cards
+            <li key={index} className="border-for-li two-row-grid">
+              <div>
+              <h3> <strong> {className} </strong> </h3>
+              <p>Activity: {classType}</p>
               <p>Status: {classStatus}</p>
-              <p>Start Date: {classStartDate}</p>
-              <p>Duration of Class: {duration} Mins</p>
+              <p>Data: {classStartDate}</p>
+              <p>Duration: {duration} min</p>
+              </div>
+              <div className="one-class-dashboard-buttons">
+              <Button variant="outlined" >View</Button>
+              <Button variant="contained" sx={{ color: red[700]}}>Delete</Button>
+              </div>
             </li>
           );
         })}
