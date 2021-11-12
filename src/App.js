@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import CreateClassForm from "./components/CreateClassForm";
+// import CreateClassForm from "./components/CreateClassForm";
 import CreateTrainerForm from "./components/CreateTrainerForm";
 import ListOfClasses from "./components/ListOfClasses";
 import ListOfMembers from "./components/ListOfMembers";
@@ -59,7 +59,7 @@ export default function App() {
 
       <main className="main">
         <ListOfClasses classes={classes} />
-        <CreateClassForm classes={classes} setClasses={setClasses} />
+        {/* <CreateClassForm classes={classes} setClasses={setClasses} /> */}
       </main>
 
       <aside className="right-aside">

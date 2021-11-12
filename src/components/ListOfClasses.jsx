@@ -7,6 +7,7 @@ export default function ListOfClasses(props) {
     <>
       <h2 className="padding-left"> List Of Classes</h2>
       <ul className="cards padding classes-list">
+
         {props.classes.map((oneClass, index) => {
           const {
             className,
