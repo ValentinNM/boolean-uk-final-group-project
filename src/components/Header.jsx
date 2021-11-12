@@ -9,12 +9,20 @@ import InputBase from '@mui/material/InputBase';
 import Badge from '@mui/material/Badge';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
+import SvgIcon from '@mui/material/SvgIcon';
 import SearchIcon from '@mui/icons-material/Search';
 import AccountCircle from '@mui/icons-material/AccountCircle';
-import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
+import logo from "../Assets/gladiatorLogo.png"
+
+function HomeIcon(props) {
+    return (
+      <SvgIcon {...props}>
+        <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
+      </SvgIcon>
+    );
+  }
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -51,7 +59,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     transition: theme.transitions.create('width'),
     width: '100%',
     [theme.breakpoints.up('md')]: {
-      width: '20ch',
+      width: '100ch',
     },
   },
 }));
@@ -121,11 +129,7 @@ export default function PrimarySearchAppBar() {
     >
       <MenuItem>
         <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-          <Badge
-        //   badgeContent={1}
-          color="error">
-            <MailIcon />
-          </Badge>
+        {/* <HomeIcon /> */}
         </IconButton>
         <p>Messages</p>
       </MenuItem>
@@ -169,7 +173,12 @@ export default function PrimarySearchAppBar() {
             aria-label="open drawer"
             sx={{ mr: 2 }}
           >
-            <MenuIcon />
+            {/* <MenuIcon /> */}
+        <div>
+            {/* <img src={require("../Assets/gladiatorLogo.png")} alt="COVAT LOGO" /> */}
+            {/* <img src={require("../../Assets/g")} alt="COVAT LOGO" /> */}
+            <img className="logo" src={logo} alt="COVAT LOGO" />
+        </div>
           </IconButton>
           <Typography
             variant="h6"
@@ -177,7 +186,7 @@ export default function PrimarySearchAppBar() {
             component="div"
             sx={{ display: { xs: 'none', sm: 'block' } }}
           >
-            MUI
+            {/* MUI */}
           </Typography>
           <Search>
             <SearchIconWrapper>
@@ -192,9 +201,10 @@ export default function PrimarySearchAppBar() {
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
             <IconButton size="large" aria-label="show 4 new mails" color="inherit">
               <Badge
-            //   badgeContent={4}
               color="error">
-                <MailIcon />
+                {/* <SvgIcon> */}
+                <HomeIcon />
+                {/* </SvgIcon> */}
               </Badge>
             </IconButton>
             <IconButton
@@ -203,7 +213,6 @@ export default function PrimarySearchAppBar() {
               color="inherit"
             >
               <Badge
-            //   badgeContent={1}
               color="error">
                 <NotificationsIcon />
               </Badge>
