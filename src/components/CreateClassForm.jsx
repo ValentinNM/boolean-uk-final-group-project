@@ -41,22 +41,21 @@ export default function CreateClassForm(props) {
         event.preventDefault()
 
         const date = new Date(classStartDate)
-
-        console.log("date: ", date)
+        const pastDuration = parseInt(duration);
 
         const classToCreate = {
             className,
             classType,
             classStatus,
-            classStartDate: date,
-            duration
+            classStartDate: date.toISOString(),
+            duration: pastDuration
         }
 
         console.log("classtocreate", classToCreate)
 
         const fetchOptions = {
             method: "POST",
-            header: {
+            headers: {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify(classToCreate)
@@ -68,7 +67,7 @@ export default function CreateClassForm(props) {
                     ...newClass
                 }
                 console.log("New class", newClass)
-                setClasses([classes, classToAdd])
+                setClasses([...classes, classToAdd])
             })
     }
 

@@ -3,14 +3,14 @@ export default function ListOfClasses(props) {
     <>
       <h2>List Of Classes</h2>
       <ul className="cards">
-        {props.classes.map((classe, index) => {
+        {props.classes.map((oneClass, index) => {
           const {
             className,
             classType,
             classStatus,
             classStartDate,
             duration,
-          } = classe;
+          } = oneClass;
           return (
             <li key={index} className=" border-for-li">
               <h3>Name of Class: {className}</h3>

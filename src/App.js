@@ -19,7 +19,7 @@ export default function App() {
     fetch("http://localhost:3030/classes")
       .then((res) => res.json())
       .then((classData) => {
-        setClasses(classData.data);
+        setClasses(classData);
         console.log("Inside Classes Get Fetch: ", classData)
       });
   }, [])
@@ -37,7 +37,7 @@ export default function App() {
     fetch("http://localhost:3030/trainers")
       .then((res) => res.json())
       .then((trainerData) => {
-        setTrainers(trainerData.data);
+        setTrainers(trainerData);
         console.log("Inside Trainer Get Fetch: ", trainerData)
       });
   }, [])
