@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
+import CreateClassForm from "./components/CreateClassForm";
 import CreateTrainerForm from "./components/CreateTrainerForm";
 import ListOfClasses from "./components/ListOfClasses";
 import ListOfMembers from "./components/ListOfMembers";
 import ListOfTrainers from "./components/ListOfTrainers";
 import Header from "./components/Header"
-// import ViewMember from "./pages/ViewMember"
 
 export default function App() {
   const [trainers, setTrainers] = useState([])
@@ -52,18 +52,19 @@ export default function App() {
         < Header/>
       </header>
 
-        <aside className="left-aside">
-        <ListOfTrainers trainers={trainers}/>
+      <aside className="left-aside">
+        <ListOfTrainers trainers={trainers} />
         <CreateTrainerForm trainers={trainers} setTrainers={setTrainers} />
-        </aside>
+      </aside>
 
-        <main className="main">
-          <ListOfClasses classes={classes} />
-        </main>
+      <main className="main">
+        <ListOfClasses classes={classes} />
+        <CreateClassForm classes={classes} setClasses={setClasses} />
+      </main>
 
-        <aside className="right-aside">
-          <ListOfMembers members={members} />
-        </aside>
+      <aside className="right-aside">
+        <ListOfMembers members={members} />
+      </aside>
 
     </div>
   );
