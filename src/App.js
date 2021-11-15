@@ -1,9 +1,13 @@
 import { useEffect, useState } from "react";
-// import CreateClassForm from "./components/CreateClassForm";
-import CreateTrainerForm from "./components/CreateTrainerForm";
+import CreateClassForm from "./Pages/CreateClassForm";
+import { Routes, Route } from "react-router-dom";
+import CreateTrainerForm from "./Pages/CreateTrainerForm";
 import ListOfClasses from "./components/ListOfClasses";
 import ListOfMembers from "./components/ListOfMembers";
 import ListOfTrainers from "./components/ListOfTrainers";
+import CreateMembers from "./Pages/CreateMembers";
+import ViewMember from "./Pages/ViewMemeber"
+import EditMember from "./Pages/EditMember";
 import Header from "./components/Header"
 import EditClassForm from "./Pages/EditClassForm";
 import { Routes } from "react-router";
@@ -13,6 +17,7 @@ export default function App() {
   const [trainers, setTrainers] = useState([])
   const [classes, setClasses] = useState([])
   const [members, setMembers] = useState([])
+  const [memberToView, setMemberToView] = useState([])
 
   const API_URL = process.env.REACT_APP_API_URL;
 
@@ -59,15 +64,21 @@ export default function App() {
         <ListOfTrainers trainers={trainers} />
         <CreateTrainerForm trainers={trainers} setTrainers={setTrainers} />
       </aside>
-
       <main className="main">
         <ListOfClasses classes={classes} />
         {/* <CreateClassForm classes={classes} setClasses={setClasses} /> */}
 
+        <Routes>
+          <Route path="/dashboard" element={<ListOfClasses classes={classes} />} />
+          <Route path="/create-class" element={<CreateClassForm classes={classes} setClasses={setClasses} />} />
+          <Route path="/create-member" element={<CreateMembers />} />
+          <Route path="/view-member" element={<ViewMember memberToView={memberToView} />} />
+          <Route path="/edit-member" element={<EditMember memberToView={memberToView} />} />
+        </Routes>
       </main>
 
       <aside className="right-aside">
-        <ListOfMembers members={members} />
+        <ListOfMembers members={members} setMemberToView={setMemberToView} />
       </aside>
       <Routes>
         <Route path="/editclass" element={<EditClassForm classes={classes} setClasses={setClasses} trainers={trainers} setTrainers={setTrainers} />} />
