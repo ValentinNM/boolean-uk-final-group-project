@@ -10,13 +10,17 @@ export default function App() {
   const [trainers, setTrainers] = useState([])
   const [classes, setClasses] = useState([])
   const [members, setMembers] = useState([])
+  const [detailsToEdit, setDetailsToEdit] = useState({})
+  const [contactEdit, setContactEdit] = useState(false)
 
   const API_URL = process.env.REACT_APP_API_URL;
 
   console.log("Inside App State: ", {
     trainers,
     classes,
-    members
+    members,
+    detailsToEdit,
+    contactEdit
   })
 
   useEffect (() => {
@@ -43,6 +47,24 @@ export default function App() {
     .then((trainerData) => {
       setTrainers(trainerData);
       console.log("Inside Trainer Get Fetch: ", trainerData)
+    });
+  }, [])
+
+  useEffect (() => {
+    fetch(`${API_URL}/address`)
+    .then((res) => res.json())
+    .then((addressData) => {
+      setTrainers(addressData);
+      console.log("Inside Trainer Get Fetch: ", addressData)
+    });
+  }, [])
+
+  useEffect (() => {
+    fetch(`${API_URL}/profile`)
+    .then((res) => res.json())
+    .then((profileData) => {
+      setTrainers(profileData);
+      console.log("Inside Trainer Get Fetch: ", profileData)
     });
   }, [])
 
