@@ -1,4 +1,7 @@
+import { useState } from "react";
 import Button from "@mui/material/Button";
+import Box from "@mui/material/Box";
+import TextField from "@mui/material/TextField";
 
 export default function (props) {
   return (
@@ -6,25 +9,25 @@ export default function (props) {
       <div className="available-classes">
         <h2>Available Classes: </h2>
         <ul>
-          {props.map((oneClass, index) => {
-            const {} = props;
+          {/* {props.map((oneClass, index) => {
+            const {} = props; */}
 
-            return (
+            {/* return ( */}
               <li className="two-column-grid-expand__right">
                 <div>
-                  <h3>Class: {} </h3>
+                  {/* <h3>Class: {} </h3> */}
                 </div>
                 <div>
                   <Button variant="contained">Enroll</Button>
                 </div>
               </li>
-            );
-          })}
+            {/* ); */}
+          {/* })} */}
         </ul>
       </div>
       <div>
         <Box
-          onSubmit={handleSubmit}
+          // onSubmit={handleSubmit}
           className=" two-column-grid-expand__right"
           component="form"
           sx={{
@@ -34,97 +37,99 @@ export default function (props) {
           autoComplete="of"
         >
           <TextField
-            onChange={}
+            // onChange={}
             type="text"
             required
             id="outlined-required"
             label="Username"
-            defaultValue={}
-            value={}
+            // defaultValue={}
+            // value={}
           />
           <TextField
             required
-            onChange={}
+            // onChange={}
             id="outlined-required"
             label="Memberships"
-            defaultValue={}
-            value={}
+            // defaultValue={}
+            // value={}
           />
           {/* might be worth making this dropdown SELECT option */}
           <TextField
             required
-            onChange={}
+            // onChange={}
             id="outlined-required"
             label="Status"
-            defaultValue={}
-            value={}
+            // defaultValue={}
+            // value={}
           />
           <div>
             <h3>Profile Details:</h3>
           <TextField
             required
-            onChange={}
+            // onChange={}
             id="outlined-required"
             label="First Name"
-            defaultValue={}
-            value={}
+            // defaultValue={}
+            // value={}
             />
           <TextField
             required
-            onChange={}
+            // onChange={}
             id="outlined-required"
             label="Last Name"
-            defaultValue={}
-            value={}
+            // defaultValue={}
+            // value={}
             />
           </div>
           <div>
               <h3>Address Details: </h3>
           <TextField
             required
-            onChange={}
+            // onChange={}
             id="outlined-required"
             label="House No"
-            defaultValue={}
-            value={}
+            // defaultValue={}
+            // value={}
             />
           <TextField
             required
-            onChange={}
+            // onChange={}
             id="outlined-required"
             label="Street"
-            defaultValue={}
-            value={}
+            // defaultValue={}
+            // value={}
             />
           <TextField
             required
-            onChange={}
+            // onChange={}
             id="outlined-required"
             label="City"
-            defaultValue={}
-            value={}
+            // defaultValue={}
+            // value={}
             />
           <TextField
             required
-            onChange={}
+            // onChange={}
             id="outlined-required"
             label="POSTCODE"
-            defaultValue={}
-            value={}
+            // defaultValue={}
+            // value={}
             />
           <TextField
             required
-            onChange={}
+            // onChange={}
             id="outlined-required"
             label="Country"
-            defaultValue={}
-            value={}
+            // defaultValue={}
+            // value={}
             />
         </div>
         </Box>
       </div>
       <div className="grid-gap">
-        <Button variant="contained" onClick={handleSubmit} type="submit">
+        <Button variant="contained"
+        // onClick={handleSubmit}
+        type="submit">
           ADD
         </Button>
       </div>
