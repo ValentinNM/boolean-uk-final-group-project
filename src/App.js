@@ -5,6 +5,9 @@ import ListOfClasses from "./components/ListOfClasses";
 import ListOfMembers from "./components/ListOfMembers";
 import ListOfTrainers from "./components/ListOfTrainers";
 import Header from "./components/Header"
+import EditClassForm from "./Pages/EditClassForm";
+import { Routes } from "react-router";
+import { Route } from "react-router";
 
 export default function App() {
   const [trainers, setTrainers] = useState([])
@@ -19,37 +22,37 @@ export default function App() {
     members
   })
 
-  useEffect (() => {
+  useEffect(() => {
     fetch(`${API_URL}/classes`)
-    .then((res) => res.json())
-    .then((classData) => {
-      setClasses(classData);
-      console.log("Inside Classes Get Fetch: ", classData)
-    });
+      .then((res) => res.json())
+      .then((classData) => {
+        setClasses(classData);
+        console.log("Inside Classes Get Fetch: ", classData)
+      });
   }, [])
 
-    useEffect (() => {
+  useEffect(() => {
     fetch(`${API_URL}/members`)
-    .then((res) => res.json())
-    .then((memberData) => {
-      setMembers(memberData);
-      console.log("Inside Member Get Fetch: ", memberData)
-    });
+      .then((res) => res.json())
+      .then((memberData) => {
+        setMembers(memberData);
+        console.log("Inside Member Get Fetch: ", memberData)
+      });
   }, [])
 
-    useEffect (() => {
+  useEffect(() => {
     fetch(`${API_URL}/trainers`)
-    .then((res) => res.json())
-    .then((trainerData) => {
-      setTrainers(trainerData);
-      console.log("Inside Trainer Get Fetch: ", trainerData)
-    });
+      .then((res) => res.json())
+      .then((trainerData) => {
+        setTrainers(trainerData);
+        console.log("Inside Trainer Get Fetch: ", trainerData)
+      });
   }, [])
 
   return (
     <div className="grid-container">
       <header className="header">
-        < Header/>
+        < Header />
       </header>
 
       <aside className="left-aside">
@@ -60,11 +63,15 @@ export default function App() {
       <main className="main">
         <ListOfClasses classes={classes} />
         {/* <CreateClassForm classes={classes} setClasses={setClasses} /> */}
+
       </main>
 
       <aside className="right-aside">
         <ListOfMembers members={members} />
       </aside>
+      <Routes>
+        <Route path="/editclass" element={<EditClassForm classes={classes} setClasses={setClasses} trainers={trainers} setTrainers={setTrainers} />} />
+      </Routes>
 
     </div>
   );
