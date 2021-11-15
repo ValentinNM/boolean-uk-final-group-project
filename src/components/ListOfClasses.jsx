@@ -27,7 +27,7 @@ export default function ListOfClasses(props) {
               <p>Duration: {duration} min</p>
               </div>
               <div className="one-class-dashboard-buttons">
-              <Button variant="outlined" >View</Button>
+              <Button variant="outlined">View</Button>
               <Button variant="contained" sx={{ color: red[700]}}>Delete</Button>
               </div>
             </li>
