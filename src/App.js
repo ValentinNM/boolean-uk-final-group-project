@@ -65,7 +65,7 @@ export default function App() {
       <Routes>
         <Route path="/dashboard" element = { <ListOfClasses classes={classes} />} />
         <Route path="/create-class" element = { <CreateClassForm classes={classes} setClasses={setClasses} />} />
-        <Route path="/create-member" element = { <CreateMembers/>} />
+        <Route path="/create-member" element = { <CreateMembers API_URL={API_URL}/>} />
         <Route path="/view-member" element = { <ViewMember memberToView={memberToView}/>} />
         <Route path="/edit-member" element={ <EditMember memberToView={memberToView} />} />
       </Routes>

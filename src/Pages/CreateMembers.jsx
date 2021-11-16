@@ -4,30 +4,116 @@ import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 
 export default function (props) {
+
+  const {API_URL} = props;
+
+  // const [memberToCreate, setMemberToCreate] = useState({
+  //   userName: "",
+  //   membershipType: "",
+  //   membershipStatus: "",
+  // });
+
+  const [memberToCreate, setMemberToCreate] = useState({
+      userName: "",
+      membershipType: "",
+      membershipStatus: "",
+      profile: { 
+        picture: "",
+        firstName: "",
+        lastname: "",
+        address: {
+          houseNumber: 0,
+          streetName: "",
+          city: "",
+          postcode: "",
+          country: "",
+        }
+      },  
+    });
+
+  const [addressToCreate, setAddressToCreate] = useState({
+    houseNumber: 0,
+    streetName: "",
+    city: "",
+    postcode: "",
+    country: "",
+  });
+
+  const [profileToCreate, setProfileToCreate] = useState({
+    picture: "",
+    firstName: "",
+    lastname: "",
+  });
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    const newMemeber = {
+      userName: "",
+      membershipType: "",
+      membershipStatus: "",
+      profile: { 
+        picture: "",
+        firstName: "",
+        lastname: "",
+        address: {
+          houseNumber: 0,
+          streetName: "",
+          city: "",
+          postcode: "",
+          country: "",
+        }
+      },  
+    };
+
+    const fetchOptions =  {
+      method : "POST",
+      headers: { 
+        "Content-Type" : "application/json"
+      },
+      body : JSON.stringify(newMemeber)
+    }
+
+          fetch(`${API_URL}/members`, fetchOptions)
+          .then((res) => res.json())
+          .then((newAddedMemeber) => { 
+            console.log("newAddedMemeber: ", newAddedMemeber)
+            
+          })
+  };
+
+  const handleInput = (event) => {
+    const inputName = event.target.name;
+    console.log("inputName: ", event.target.name);
+
+    const inputValue = event.target.value;
+    console.log("inputValue: ", event.target.value)
+
+    setMemberToCreate({
+      ...memberToCreate,
+      [inputName]: event.target.value,
+    });
+
+    console.log("memberToCreate: ", memberToCreate)
+      
+  };
+
   return (
     <section className="two-column-grid-forms">
       <div className="available-classes">
         <h2>Available Classes: </h2>
         <ul>
-          {/* {props.map((oneClass, index) => {
-            const {} = props; */}
-
-            {/* return ( */}
-              <li className="two-column-grid-expand__right">
-                <div>
-                  {/* <h3>Class: {} </h3> */}
-                </div>
-                <div>
-                  <Button variant="contained">Enroll</Button>
-                </div>
-              </li>
-            {/* ); */}
-          {/* })} */}
+          <li className="two-column-grid-expand__right">
+            <div></div>
+            <div>
+              <Button variant="contained">Enroll</Button>
+            </div>
+          </li>
         </ul>
       </div>
       <div>
         <Box
-          // onSubmit={handleSubmit}
+          onSubmit={handleSubmit}
           className=" two-column-grid-expand__right"
           component="form"
           sx={{
@@ -37,99 +123,87 @@ export default function (props) {
           autoComplete="of"
         >
           <TextField
-            // onChange={}
+            onChange={handleInput}
             type="text"
+            name="userName"
             required
             id="outlined-required"
             label="Username"
-            // defaultValue={}
-            // value={}
           />
           <TextField
             required
-            // onChange={}
+            onChange={handleInput}
             id="outlined-required"
-            label="Memberships"
-            // defaultValue={}
-            // value={}
+            name="membershipType"
+            label="Memebership Type"
           />
           {/* might be worth making this dropdown SELECT option */}
           <TextField
             required
-            // onChange={}
+            onChange={handleInput}
             id="outlined-required"
+            name="membershipStatus"
             label="Status"
-            // defaultValue={}
-            // value={}
           />
           <div>
             <h3>Profile Details:</h3>
-          <TextField
-            required
-            // onChange={}
-            id="outlined-required"
-            label="First Name"
-            // defaultValue={}
-            // value={}
+            <TextField
+              required
+              onChange={handleInput}
+              id="outlined-required"
+              name="firstName"
+              label="First Name"
             />
-          <TextField
-            required
-            // onChange={}
-            id="outlined-required"
-            label="Last Name"
-            // defaultValue={}
-            // value={}
+            <TextField
+              required
+              onChange={handleInput}
+              id="outlined-required"
+              name="lastname"
+              label="Last Name"
             />
           </div>
           <div>
-              <h3>Address Details: </h3>
-          <TextField
-            required
-            // onChange={}
-            id="outlined-required"
-            label="House No"
-            // defaultValue={}
-            // value={}
+            <h3>Address Details: </h3>
+            <TextField
+              required
+              onChange={handleInput}
+              id="outlined-required"
+              name="houseNumber"
+              label="House No"
             />
-          <TextField
-            required
-            // onChange={}
-            id="outlined-required"
-            label="Street"
-            // defaultValue={}
-            // value={}
+            <TextField
+              required
+              onChange={handleInput}
+              id="outlined-required"
+              name="street"
+              label="Street"
             />
-          <TextField
-            required
-            // onChange={}
-            id="outlined-required"
-            label="City"
-            // defaultValue={}
-            // value={}
+            <TextField
+              required
+              onChange={handleInput}
+              id="outlined-required"
+              name="city"
+              label="City"
             />
-          <TextField
-            required
-            // onChange={}
-            id="outlined-required"
-            label="POSTCODE"
-            // defaultValue={}
-            // value={}
+            <TextField
+              required
+              onChange={handleInput}
+              id="outlined-required"
+              name="postcode"
+              label="POSTCODE"
             />
-          <TextField
-            required
-            // onChange={}
-            id="outlined-required"
-            label="Country"
-            // defaultValue={}
-            // value={}
+            <TextField
+              required
+              onChange={handleInput}
+              id="outlined-required"
+              name="country"
+              label="Country"
             />
-        </div>
+          </div>
         </Box>
       </div>
       <div className="grid-gap">
-        <Button variant="contained"
-        // onClick={handleSubmit}
-        type="submit">
+        <Button variant="contained" type="submit">
           ADD
         </Button>
       </div>

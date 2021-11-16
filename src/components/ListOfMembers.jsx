@@ -2,10 +2,12 @@ import Button from '@mui/material/Button';
 import { Link } from 'react-router-dom';
 
 export default function ListOfMembers(props) {
-  
+
+  const {members, setMemberToView} = props; 
+
   const handleMemberToView = (event, member) => { 
     console.log("handleMemberToView: ", member)
-    props.setMemberToView(member)
+    setMemberToView(member)
   }
   
   return (
@@ -13,7 +15,7 @@ export default function ListOfMembers(props) {
       <section>
       <h2>List Of Members</h2>
       <ul className=" padding members-list">
-        {props.members.map((member, index) => {
+        {members.map((member, index) => {
           
           const { userName, membershipType, membershipStatus } = member;
           return (
