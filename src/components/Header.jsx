@@ -15,6 +15,7 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import logo from "../Assets/gladiatorLogo.png"
+import {Link} from "react-router-dom";
 
 function HomeIcon(props) {
     return (
@@ -129,9 +130,7 @@ export default function PrimarySearchAppBar() {
     >
       <MenuItem>
         <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-        {/* <HomeIcon /> */}
         </IconButton>
-        <p>Messages</p>
       </MenuItem>
       <MenuItem>
         <IconButton
@@ -140,12 +139,10 @@ export default function PrimarySearchAppBar() {
           color="inherit"
         >
           <Badge 
-        //   badgeContent={1}
           color="error">
             <NotificationsIcon />
           </Badge>
         </IconButton>
-        <p>Notifications</p>
       </MenuItem>
       <MenuItem onClick={handleProfileMenuOpen}>
         <IconButton
@@ -173,11 +170,12 @@ export default function PrimarySearchAppBar() {
             aria-label="open drawer"
             sx={{ mr: 2 }}
           >
-            {/* <MenuIcon /> */}
         <div>
             {/* <img src={require("../Assets/gladiatorLogo.png")} alt="COVAT LOGO" /> */}
             {/* <img src={require("../../Assets/g")} alt="COVAT LOGO" /> */}
+            <Link to="/dashboard">
             <img className="logo" src={logo} alt="COVAT LOGO" />
+            </Link>
         </div>
           </IconButton>
           <Typography
@@ -186,7 +184,6 @@ export default function PrimarySearchAppBar() {
             component="div"
             sx={{ display: { xs: 'none', sm: 'block' } }}
           >
-            {/* MUI */}
           </Typography>
           <Search>
             <SearchIconWrapper>
@@ -202,9 +199,9 @@ export default function PrimarySearchAppBar() {
             <IconButton size="large" aria-label="show 4 new mails" color="inherit">
               <Badge
               color="error">
-                {/* <SvgIcon> */}
+                <Link to="/dashboard">
                 <HomeIcon />
-                {/* </SvgIcon> */}
+                </Link>
               </Badge>
             </IconButton>
             <IconButton
