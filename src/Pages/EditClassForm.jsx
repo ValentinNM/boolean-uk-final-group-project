@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function EditClassForm(props) {
     const { classes, setClasses, trainers, setTrainers } = props
@@ -13,6 +14,8 @@ export default function EditClassForm(props) {
     })
 
     const API_URL = process.env.REACT_APP_API_URL;
+
+    const navigate = useNavigate();
 
     console.log("classes", classes)
 
@@ -127,6 +130,7 @@ export default function EditClassForm(props) {
                 });
 
                 setClasses(updatedClass)
+                navigate(`/classes`)
             })
     }
 

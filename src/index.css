@@ -88,20 +88,20 @@ select {
 }
 
 .grid-container {
-  /* min-width: 100vw; => maybe to be removed */ 
+   /* min-width: 100vw; => maybe to be removed  */
   max-height: 100vh;
   display: grid;
   grid-template:
     "header header header header header" 75px
     ". left-aside main right-aside ." 1fr /
     0.125fr 1fr 2fr 1fr 0.125fr;
-  gap: 5px;
-  /*
-  => SPARES <=
+  gap: 5px; 
+  
+  /* => SPARES <=
   background: linear-gradient(to right, #2c3e50, #bdc3c7);
   background: linear-gradient(to right, #FFFFFF, #6DD5FA, #2980B9); 
-  background: linear-gradient(to right, #E1F5C4, #EDE574);
-  */
+  background: linear-gradient(to right, #E1F5C4, #EDE574); */
+  
 background: linear-gradient(to right, #7AA1D2, #DBD4B4, #CC95C0);
 
 }
@@ -227,6 +227,7 @@ background: linear-gradient(to right, #7AA1D2, #DBD4B4, #CC95C0);
 }
 .cards {
   display: grid;
+  grid-auto-rows: minmax(30px, auto);
   grid-template-columns: repeat(auto-fill, 275px);
   gap: 15px;
   justify-content: center;
@@ -253,6 +254,22 @@ background: linear-gradient(to right, #7AA1D2, #DBD4B4, #CC95C0);
   padding: 10px;
 }
 
-.padding-left{
+/* .padding-left{
   padding-left: 10x;
+} */
+
+.four-column-grid {
+  display: grid;
+  grid-template-columns: repeat(5, auto);
 }
+
+.classes-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(225px, 1fr));
+  margin: 0;
+  padding: 0;
+  /* padding-left: 25px; */
+  /* background: linear-gradient(90deg, #3f5efb 0%, #fc466b 100%); */
+  place-items: center;
+}
+

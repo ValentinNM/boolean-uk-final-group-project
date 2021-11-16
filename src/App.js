@@ -59,16 +59,25 @@ export default function App() {
         < Header />
       </header>
 
-      {/* <aside className="left-aside">
+      <aside className="left-aside">
+        <ListOfTrainers trainers={trainers} />
+        <CreateTrainerForm trainers={trainers} setTrainers={setTrainers} />
 
       </aside>
-      <main className="main"> */}
+      <main className="main">
+        <ListOfClasses classes={classes} />
+
+      </main>
 
 
+      <aside className="right-aside">
+        <ListOfMembers members={members} setMemberToView={setMemberToView} />
+        {/* <ViewMember memberToView={memberToView} /> */}
 
-      <Routes>
+      </aside>
+
+      {/* <Routes>
         <Route path="/" />
-        <Route path="/dashboard" element={<ListOfClasses classes={classes} />} />
         <Route path="/create-class" element={<CreateClassForm classes={classes} setClasses={setClasses} />} />
         <Route path="/create-member" element={<CreateMembers />} />
         <Route path="/view-member" element={<ViewMember memberToView={memberToView} />} />
@@ -78,12 +87,7 @@ export default function App() {
         <Route path="/create-trainer" element={<CreateTrainerForm trainers={trainers} setTrainers={setTrainers} />} />
         <Route path="/classes/:classId/editclass" element={<EditClassForm classes={classes} setClasses={setClasses} trainers={trainers} setTrainers={setTrainers} />} />
         <Route path="/members" element={<ListOfMembers members={members} setMemberToView={setMemberToView} />} />
-      </Routes>
-      {/* </main> */}
-
-      {/* <aside className="right-aside"> */}
-
-      {/* </aside> */}
+      </Routes> */}
 
 
     </div>
