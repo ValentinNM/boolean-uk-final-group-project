@@ -99,7 +99,7 @@ export default function App() {
 
 
       <aside className="right-aside">
-        <ListOfMembers members={members} setMemberToView={setMemberToView} />
+        <ListOfMembers members={members} API_URL={API_URL} setMemberToView={setMemberToView} />
         {/* <ViewMember memberToView={memberToView} /> */}
 
       </aside>

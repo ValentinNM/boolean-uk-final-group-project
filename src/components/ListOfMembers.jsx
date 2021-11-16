@@ -3,11 +3,15 @@ import { Link } from 'react-router-dom';
 
 export default function ListOfMembers(props) {
 
-  const {members, setMemberToView} = props; 
+  const {members, setMemberToView, API_URL} = props; 
 
   const handleMemberToView = (event, member) => { 
     console.log("handleMemberToView: ", member)
     setMemberToView(member)
+  }
+
+  const handleDelete = (event, id, member) => { 
+    fetch(`${API_URL}/members/${id}`, {method: "DELETE"})
   }
   
   return (
@@ -17,7 +21,7 @@ export default function ListOfMembers(props) {
       <ul className=" padding members-list">
         {members.map((member, index) => {
           
-          const { userName, membershipType, membershipStatus } = member;
+          const { id, userName, membershipType, membershipStatus } = member;
           return (
             <li key={index} className="border-for-li two-column-grid-expand__right">
               <div className="member-details">
@@ -30,6 +34,11 @@ export default function ListOfMembers(props) {
                   <Link to="/view-member">
                   VIEW
                   </Link>
+                </Button>
+                <Button variant="contained" id={id}
+                onClick={(e)=> handleDelete(e, id)}
+                >
+                  Delete
                 </Button>
               </div>
             </li>
