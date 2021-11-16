@@ -4,34 +4,15 @@ import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 
 export default function (props) {
-
-  const {API_URL} = props;
-
-  // const [memberToCreate, setMemberToCreate] = useState({
-  //   userName: "",
-  //   membershipType: "",
-  //   membershipStatus: "",
-  // });
+  const { API_URL } = props;
 
   const [memberToCreate, setMemberToCreate] = useState({
-      userName: "",
-      membershipType: "",
-      membershipStatus: "",
-      profile: { 
-        picture: "",
-        firstName: "",
-        lastname: "",
-        address: {
-          houseNumber: 0,
-          streetName: "",
-          city: "",
-          postcode: "",
-          country: "",
-        }
-      },  
-    });
-
-  const [addressToCreate, setAddressToCreate] = useState({
+    userName: "",
+    membershipType: "",
+    membershipStatus: "",
+    picture: "smth",
+    firstName: "",
+    lastname: "",
     houseNumber: 0,
     streetName: "",
     city: "",
@@ -39,47 +20,43 @@ export default function (props) {
     country: "",
   });
 
-  const [profileToCreate, setProfileToCreate] = useState({
-    picture: "",
-    firstName: "",
-    lastname: "",
-  });
-
   const handleSubmit = (event) => {
+    console.log("Submiting form");
     event.preventDefault();
 
     const newMemeber = {
-      userName: "",
-      membershipType: "",
-      membershipStatus: "",
-      profile: { 
-        picture: "",
-        firstName: "",
-        lastname: "",
+      userName: memberToCreate.userName,
+      membershipType: memberToCreate.membershipType,
+      membershipStatus: memberToCreate.membershipStatus,
+      profile: {
+        picture: memberToCreate.picture,
+        firstName: memberToCreate.firstName,
+        lastname: memberToCreate.lastname,
         address: {
-          houseNumber: 0,
-          streetName: "",
-          city: "",
-          postcode: "",
-          country: "",
-        }
-      },  
+          houseNumber: memberToCreate.houseNumber,
+          streetName: memberToCreate.streetName,
+          city: memberToCreate.city,
+          postcode: memberToCreate.postcode,
+          country: memberToCreate.country,
+        },
+      },
     };
 
-    const fetchOptions =  {
-      method : "POST",
-      headers: { 
-        "Content-Type" : "application/json"
-      },
-      body : JSON.stringify(newMemeber)
-    }
+    console.log("newMemeber: ", newMemeber);
 
-          fetch(`${API_URL}/members`, fetchOptions)
-          .then((res) => res.json())
-          .then((newAddedMemeber) => { 
-            console.log("newAddedMemeber: ", newAddedMemeber)
-            
-          })
+    const fetchOptions = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newMemeber),
+    };
+
+    fetch(`${API_URL}/members/add`, fetchOptions)
+      .then((res) => res.json())
+      .then((newAddedMemeber) => {
+        console.log("newAddedMemeber: ", newAddedMemeber);
+      });
   };
 
   const handleInput = (event) => {
@@ -87,15 +64,14 @@ export default function (props) {
     console.log("inputName: ", event.target.name);
 
     const inputValue = event.target.value;
-    console.log("inputValue: ", event.target.value)
+    console.log("inputValue: ", event.target.value);
 
     setMemberToCreate({
       ...memberToCreate,
       [inputName]: event.target.value,
     });
 
-    console.log("memberToCreate: ", memberToCreate)
-      
+    console.log("memberToCreate: ", memberToCreate);
   };
 
   return (
@@ -200,13 +176,18 @@ export default function (props) {
               label="Country"
             />
           </div>
+          <div>
+            <Button variant="contained" type="submit">
+              ADD
+            </Button>
+          </div>
         </Box>
       </div>
-      <div className="grid-gap">
+      {/* <div className="grid-gap">
         <Button variant="contained" type="submit">
           ADD
         </Button>
-      </div>
+      </div> */}
     </section>
   );
 }
