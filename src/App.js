@@ -17,11 +17,18 @@ export default function App() {
   const [classes, setClasses] = useState([])
   const [members, setMembers] = useState([])
 <<<<<<< HEAD
+<<<<<<< HEAD
   const [detailsToEdit, setDetailsToEdit] = useState({})
   const [contactEdit, setContactEdit] = useState(false)
 =======
   const [memberToView, setMemberToView] = useState([])
 >>>>>>> c4c3a15c2c159930588a80835bb0b6cb4e610050
+=======
+  const [detailsToEdit, setDetailsToEdit] = useState({})
+  const [contactEdit, setContactEdit] = useState(false)
+  const [memberToView ,setMemberToView] = useState([])
+
+>>>>>>> 451bbc1880c8fb416772e122a20625432e3bfac5
 
   const API_URL = process.env.REACT_APP_API_URL;
 
