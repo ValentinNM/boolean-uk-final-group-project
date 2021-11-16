@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 export default function EditClassForm(props) {
@@ -6,23 +6,41 @@ export default function EditClassForm(props) {
 
     const { classId } = useParams();
     const foundClass = classes.find((classe) => {
-        console.log({ classe });
-        console.log({ id: classe.id })
-        console.log(classe.id === parseInt(classId))
+        // console.log({ classe });
+        // console.log({ id: classe.id })
+        // console.log(classe.id === parseInt(classId))
         return classe.id === parseInt(classId)
     })
 
+    const API_URL = process.env.REACT_APP_API_URL;
+
     console.log("classes", classes)
 
-    const [className, setClassName] = useState("")
-    const [classType, setClassType] = useState("")
-    const [classStatus, setClassStatus] = useState("")
+    const [classToEdit, setClassToEdit] = useState(foundClass)
+    const [className, setClassName] = useState(classToEdit.className)
+    const [classType, setClassType] = useState(classToEdit.classType)
+    const [classStatus, setClassStatus] = useState(classToEdit.classStatus)
     const [classStartDate, setClassStartDate] = useState(new Date().toDateString())
-    const [duration, setDuration] = useState("")
-    const [fullName, setFullName] = useState("");
-    const [speciality, setSpeciality] = useState("");
-    const [qualification, setQualification] = useState("");
-    const [gender, setGender] = useState("");
+    const [duration, setDuration] = useState(classToEdit.duration)
+    const [fullName, setFullName] = useState(classToEdit.trainer.fullName);
+    const [speciality, setSpeciality] = useState(classToEdit.trainer.speciality);
+    const [qualification, setQualification] = useState(classToEdit.trainer.qualification);
+    const [gender, setGender] = useState(classToEdit.trainer.gender);
+
+    // useEffect(() => {
+    //     console.log("Inside class to edit: ", classToEdit)
+    //     if (classToEdit) {
+    //         setClassName(classToEdit.className)
+    //         setClassType(classToEdit.classType)
+    //         setClassStatus(classToEdit.classStatus)
+    //         setClassStartDate(classToEdit.setClassStartDate)
+    //         setDuration(classToEdit.duration)
+    //         setFullName(classToEdit.fullName)
+    //         setSpeciality(classToEdit.speciality)
+    //         setQualification(classToEdit.qualification)
+    //         setGender(classToEdit.gender)
+    //     }
+    // }, [classToEdit])
 
     const handleClassName = (event) => {
         event.preventDefault()
@@ -95,14 +113,14 @@ export default function EditClassForm(props) {
             body: JSON.stringify(classToUpdate)
         };
 
-        fetch(`http://localhost:3030/classes${classId}`, fetchOptions)
+        fetch(`${API_URL}/classes/${classId}`, fetchOptions)
             .then((res) => res.json())
             .then((classToUpdate) => {
                 console.log("Updated class", classToUpdate);
 
                 const updatedClass = classes.map((classe) => {
-                    if (classToUpdate.data.id === classe.id) {
-                        return classToUpdate.data;
+                    if (classToUpdate.id === classe.id) {
+                        return classToUpdate;
                     } else {
                         return classe
                     }
@@ -165,7 +183,7 @@ export default function EditClassForm(props) {
                     type="text"
                     value={fullName}
                 />
-                <label htmlFor="">Type: </label>
+                <label htmlFor="">Speciality: </label>
                 <input
                     onChange={handleSpeciality}
                     id=""
@@ -173,7 +191,7 @@ export default function EditClassForm(props) {
                     type="text"
                     value={speciality}
                 />
-                <label htmlFor="">Status: </label>
+                <label htmlFor="">Qualification: </label>
                 <input
                     onChange={handleQualification}
                     id=""
@@ -181,12 +199,12 @@ export default function EditClassForm(props) {
                     type="text"
                     value={qualification}
                 />
-                <label htmlFor="">Duration (minutes): </label>
+                <label htmlFor="">Gender: </label>
                 <input
                     onChange={handleGender}
                     id=""
                     name=""
-                    type="number"
+                    type="text"
                     value={gender}
                 />
                 <button type="submit">

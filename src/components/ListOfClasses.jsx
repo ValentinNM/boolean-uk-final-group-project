@@ -1,6 +1,7 @@
 import Button from '@mui/material/Button';
 import { red } from '@mui/material/colors';
 import { useNavigate } from "react-router-dom";
+import classId from "../Pages/EditClassForm"
 
 export default function ListOfClasses(props) {
 
@@ -31,7 +32,7 @@ export default function ListOfClasses(props) {
               </div>
               <div className="one-class-dashboard-buttons">
                 <Button variant="outlined" >View</Button>
-                <Button variant="outlined" onClick={navigate("/editclass")}>Edit</Button>
+                <Button variant="outlined" onClick={() => navigate(`/classes/${oneClass.id}/editclass`)}>Edit</Button>
                 <Button variant="contained" sx={{ color: red[700] }}>Delete</Button>
               </div>
             </li>
