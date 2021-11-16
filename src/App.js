@@ -16,14 +16,28 @@ export default function App() {
   const [trainers, setTrainers] = useState([])
   const [classes, setClasses] = useState([])
   const [members, setMembers] = useState([])
+<<<<<<< HEAD
+<<<<<<< HEAD
+  const [detailsToEdit, setDetailsToEdit] = useState({})
+  const [contactEdit, setContactEdit] = useState(false)
+=======
   const [memberToView, setMemberToView] = useState([])
+>>>>>>> c4c3a15c2c159930588a80835bb0b6cb4e610050
+=======
+  const [detailsToEdit, setDetailsToEdit] = useState({})
+  const [contactEdit, setContactEdit] = useState(false)
+  const [memberToView ,setMemberToView] = useState([])
+
+>>>>>>> 451bbc1880c8fb416772e122a20625432e3bfac5
 
   const API_URL = process.env.REACT_APP_API_URL;
 
   console.log("Inside App State: ", {
     trainers,
     classes,
-    members
+    members,
+    detailsToEdit,
+    contactEdit
   })
 
   useEffect(() => {
@@ -51,6 +65,24 @@ export default function App() {
         setTrainers(trainerData);
         console.log("Inside Trainer Get Fetch: ", trainerData)
       });
+  }, [])
+
+  useEffect (() => {
+    fetch(`${API_URL}/address`)
+    .then((res) => res.json())
+    .then((addressData) => {
+      setTrainers(addressData);
+      console.log("Inside Trainer Get Fetch: ", addressData)
+    });
+  }, [])
+
+  useEffect (() => {
+    fetch(`${API_URL}/profile`)
+    .then((res) => res.json())
+    .then((profileData) => {
+      setTrainers(profileData);
+      console.log("Inside Trainer Get Fetch: ", profileData)
+    });
   }, [])
 
   return (
