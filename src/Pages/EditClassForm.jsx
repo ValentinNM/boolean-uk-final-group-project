@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
@@ -76,6 +76,7 @@ export default function EditClassForm(props) {
             .then((classToUpdate) => {
                 console.log("Updated class", classToUpdate);
 
+                // const updatedClass = classes.map(classe => classToUpdate.id === classe.id ? classToUpdate : classe);  // ternary way
                 const updatedClass = classes.map((classe) => {
                     if (classToUpdate.id === classe.id) {
                         return classToUpdate;

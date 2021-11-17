@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import Button from "@mui/material/Button";
 
@@ -12,24 +11,33 @@ export default function ViewMember(props) {
   return (
     <section className="all-member-details-container center-style two-column-grid-forms">
       <ul>
-        <li>
+        <li className ="two-column-grid-expand__right">
+            <div className="view-member-details">
           <div className="member-main-details">
-            <h3>Username: {userName} </h3>
-            <h3>Membership: {membershipType} </h3>
-            <h3>Status: {membershipStatus} </h3>
-          </div>
+            <h1>Member details</h1>
+            <h1> Username: {userName} </h1>
+            <h1> First Name: {firstName} </h1>
+            <h1> Last Name: {lastname} </h1>
+          </div>          
           <div className="profile">
-            <h3> First Name: {firstName} </h3>
-            <h3> Last Name: {lastname} </h3>
+            <h1>Membership: </h1>
+            <h1>Membership: {membershipType} </h1>
+            <h1>Status: {membershipStatus} </h1>
           </div>
           <div className="address">
-            <h3> Property No: {houseNumber} </h3>
-            <h3> Street: {streetName} </h3>
-            <h3> City: {city} </h3>
-            <h3> Postcode: {postcode} </h3>
-            <h3> Country: {country} </h3>
+            <h1>Address: </h1>
+            <h1> Property No: {houseNumber} </h1>
+            <h1> Street: {streetName} </h1>
+            <h1> City: {city} </h1>
+            <h1> Postcode: {postcode} </h1>
+            <h1> Country: {country} </h1>
           </div>
-          <div>
+            </div>
+            <div className="member-avatar">
+                <img src={profile.picture} alt="member-picture" />
+                {/* change avatar */}
+            </div>
+          <div className="one-class-dashboard-buttons">
             <Button variant="container">
               <Link to="/edit-member">EDIT</Link>
             </Button>

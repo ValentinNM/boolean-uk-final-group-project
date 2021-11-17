@@ -99,7 +99,6 @@ select {
 }
 
 .grid-container {
-   /* min-width: 100vw; => maybe to be removed  */
   max-height: 100vh;
   display: grid;
   grid-template:
@@ -107,19 +106,16 @@ select {
     ". left-aside main right-aside ." 1fr /
     0.125fr 1fr 2fr 1fr 0.125fr;
   gap: 5px; 
-  
   /* => SPARES <=
   background: linear-gradient(to right, #2c3e50, #bdc3c7);
   background: linear-gradient(to right, #FFFFFF, #6DD5FA, #2980B9); 
   background: linear-gradient(to right, #E1F5C4, #EDE574); */
-  
-background: linear-gradient(to right, #7AA1D2, #DBD4B4, #CC95C0);
+  background: linear-gradient(to right, #7AA1D2, #DBD4B4, #CC95C0);
 
 }
 
 .header {
   grid-area: header;
-  /* border: 1px dotted black; */
 }
 
 .logo { 
@@ -129,7 +125,6 @@ background: linear-gradient(to right, #7AA1D2, #DBD4B4, #CC95C0);
 /* LEFT ASIDE => TRAINERS */
 .left-aside {
   grid-area: left-aside;
-  /* border: 1px dotted black; */
 }
 
 .trainers-list {
@@ -166,7 +161,6 @@ background: linear-gradient(to right, #7AA1D2, #DBD4B4, #CC95C0);
   max-height: 87vh ;
   overflow-x: hidden;
   overflow-y: auto;
-  /* gap:10px; */
 }
 
 .classes-list::-webkit-scrollbar{ /* removes the scrollbar, though still scrolable */
@@ -182,7 +176,6 @@ background: linear-gradient(to right, #7AA1D2, #DBD4B4, #CC95C0);
 /* RIGHT ASIDE => MEMBERS LIST */
 .right-aside {
   grid-area: right-aside;
-  /* border: 1px dotted black; */
 }
 .members-list { 
   display: grid;
@@ -222,7 +215,7 @@ background: linear-gradient(to right, #7AA1D2, #DBD4B4, #CC95C0);
   transition: all 300ms;
 }
 .border-for-li:hover {
-  transform: scale(1.05);
+  transform: scale(1.02);
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 .two-column-grid-expand__right {
@@ -232,7 +225,6 @@ background: linear-gradient(to right, #7AA1D2, #DBD4B4, #CC95C0);
 }
 .two-row-grid {
   display: grid;
-  /* grid-template-columns: 1fr auto; */
   grid-template-rows: 1fr auto;
   gap: 5px;
 }
@@ -243,7 +235,6 @@ background: linear-gradient(to right, #7AA1D2, #DBD4B4, #CC95C0);
   gap: 15px;
   justify-content: center;
   justify-items: center;
-  /* padding: 24px 0; */
   margin-bottom: 24px;
 }
 
@@ -267,7 +258,24 @@ background: linear-gradient(to right, #7AA1D2, #DBD4B4, #CC95C0);
 
 /* .padding-left{
   padding-left: 10x;
-} */
+}
+
+/* member */
+.member-avatar img { 
+  max-width: 200px;
+}
+
+.switch-centre-container { 
+  display: grid;
+  padding-top : 40px;
+}
+
+.view-member-details { 
+  display: grid;
+  justify-content: center;
+  grid-row-gap: 30px;
+}
+
 
 .four-column-grid {
   display: grid;
