@@ -4,15 +4,30 @@ import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 
 export default function EditMember(props) {
+
+  const { memberToView, members, setMembers } = props;
+
+  const API_URL = process.env.REACT_APP_API_URL;
+
+  const [memberToEdit, setMemberToEdit] = useState({
+    userName: "",
+    membershipType: "",
+    membershipStatus: "",
+    picture: "smth",
+    firstName: "",
+    lastname: "",
+    houseNumber: 0,
+    streetName: "",
+    city: "",
+    postcode: "",
+    country: "",
+  })
+
   return (
     <section className="two-column-grid-forms">
       <div className="available-classes">
         <h2>Available Classes: </h2>
         <ul>
-          {/* {props.map((oneClass, index) => {
-            const {} = props; */}
-
-            {/* return ( */}
               <li className="two-column-grid-expand__right">
                 <div>
                   {/* <h3>Class: {} </h3> */}
@@ -21,8 +36,6 @@ export default function EditMember(props) {
                   <Button variant="contained">Enroll</Button>
                 </div>
               </li>
-            {/* ); */}
-          {/* })} */}
         </ul>
       </div>
       <div>

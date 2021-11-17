@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 export default function ListOfMembers(props) {
 
-  const {members, setMemberToView, API_URL} = props; 
+  const {members, setMembers, setMemberToView, API_URL} = props; 
 
   const handleMemberToView = (event, member) => { 
     console.log("handleMemberToView: ", member)
@@ -12,6 +12,11 @@ export default function ListOfMembers(props) {
 
   const handleDelete = (event, id, member) => { 
     fetch(`${API_URL}/members/${id}`, {method: "DELETE"})
+    // .then((res) => res.json())
+    // .then(deletedMember => {
+    //   setMembers(...members)
+    // })
+    setMembers(...members)
   }
   
   return (
@@ -33,6 +38,11 @@ export default function ListOfMembers(props) {
                 <Button variant="contained" onClick={(e) => handleMemberToView(e, member) }>
                   <Link to="/view-member">
                   VIEW
+                  </Link>
+                </Button>
+                <Button variant="contained" onClick={(e) => handleMemberToView(e, member) }>
+                  <Link to="/edit-member">
+                  Edit
                   </Link>
                 </Button>
                 <Button variant="contained" id={id}

@@ -7,7 +7,7 @@ import ListOfMembers from "./components/ListOfMembers";
 import ListOfTrainers from "./components/ListOfTrainers";
 import CreateMembers from "./Pages/CreateMembers";
 import ViewMember from "./Pages/ViewMemeber"
-import EditMember from "./Pages/EditMemberForm";
+import EditMember from "./Pages/EditMember";
 import Header from "./components/Header"
 import EditClassForm from "./Pages/EditClassForm";
 
@@ -93,15 +93,22 @@ export default function App() {
         <Routes>
         {/* <ListOfClasses classes={classes} /> */}
         {/* <Route path="/create-member" element={<CreateMembers />} /> */}
-        <Route path="/create-member" element={<CreateMembers API_URL ={API_URL }  />} />
+        <Route
+        path="/create-member"
+        element={<CreateMembers API_URL={API_URL} members={members} setMembers={setMembers} />}
+        />
+        <Route path="/edit-member" element={<EditMember
+          memberToView={memberToView}
+          members={members}
+          setMembers={setMembers} />}
+        />
       </Routes>
       </main>
 
 
       <aside className="right-aside">
-        <ListOfMembers members={members} API_URL={API_URL} setMemberToView={setMemberToView} />
+        <ListOfMembers members={members} setMembers={setMembers} API_URL={API_URL} setMemberToView={setMemberToView} />
         {/* <ViewMember memberToView={memberToView} /> */}
-
       </aside>
 
       {/* <Routes>
