@@ -3,8 +3,8 @@ import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 
-export default function CreateMember(props) {
-  const { API_URL } = props;
+export default function (props) {
+  const { API_URL, members, setMembers } = props;
 
   const [memberToCreate, setMemberToCreate] = useState({
     userName: "",
@@ -52,6 +52,7 @@ const [addressToCreate, setAddressToCreate] = useState({
       .then((res) => res.json())
       .then((newAddedMemeber) => {
         console.log("newAddedMemeber: ", newAddedMemeber);
+        setMembers([...members, newAddedMemeber])
       });
   };
 
