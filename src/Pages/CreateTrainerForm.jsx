@@ -3,6 +3,7 @@ import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 
+
 export default function CreateTrainerForm(props) {
   const { trainers, setTrainers } = props;
 
@@ -58,6 +59,9 @@ export default function CreateTrainerForm(props) {
 
   return (
     <>
+      {/* <header className="header">
+        < Header />
+      </header> */}
       <section className=" padding-sides add-trainer padding two-row-grid">
         <div>
           <Box

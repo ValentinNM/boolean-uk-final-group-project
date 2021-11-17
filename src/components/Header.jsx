@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import { useState } from 'react';
 import { styled, alpha } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -15,15 +15,15 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import logo from "../Assets/gladiatorLogo.png"
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function HomeIcon(props) {
-    return (
-      <SvgIcon {...props}>
-        <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
-      </SvgIcon>
-    );
-  }
+  return (
+    <SvgIcon {...props}>
+      <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
+    </SvgIcon>
+  );
+}
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -138,8 +138,8 @@ export default function PrimarySearchAppBar() {
           aria-label="show 17 new notifications"
           color="inherit"
         >
-          <Badge 
-          color="error">
+          <Badge
+            color="error">
             <NotificationsIcon />
           </Badge>
         </IconButton>
@@ -170,13 +170,13 @@ export default function PrimarySearchAppBar() {
             aria-label="open drawer"
             sx={{ mr: 2 }}
           >
-        <div>
-            {/* <img src={require("../Assets/gladiatorLogo.png")} alt="COVAT LOGO" /> */}
-            {/* <img src={require("../../Assets/g")} alt="COVAT LOGO" /> */}
-            <Link to="/dashboard">
-            <img className="logo" src={logo} alt="COVAT LOGO" />
-            </Link>
-        </div>
+            <div>
+              {/* <img src={require("../Assets/gladiatorLogo.png")} alt="COVAT LOGO" /> */}
+              {/* <img src={require("../../Assets/g")} alt="COVAT LOGO" /> */}
+              <Link to="/">
+                <img className="logo" src={logo} alt="COVAT LOGO" />
+              </Link>
+            </div>
           </IconButton>
           <Typography
             variant="h6"
@@ -198,9 +198,9 @@ export default function PrimarySearchAppBar() {
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
             <IconButton size="large" aria-label="show 4 new mails" color="inherit">
               <Badge
-              color="error">
-                <Link to="/dashboard">
-                <HomeIcon />
+                color="error">
+                <Link to="/">
+                  <HomeIcon />
                 </Link>
               </Badge>
             </IconButton>
@@ -210,7 +210,7 @@ export default function PrimarySearchAppBar() {
               color="inherit"
             >
               <Badge
-              color="error">
+                color="error">
                 <NotificationsIcon />
               </Badge>
             </IconButton>

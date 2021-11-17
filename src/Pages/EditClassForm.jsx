@@ -25,10 +25,10 @@ export default function EditClassForm(props) {
     const [classStatus, setClassStatus] = useState(classToEdit.classStatus)
     const [classStartDate, setClassStartDate] = useState(new Date().toDateString())
     const [duration, setDuration] = useState(classToEdit.duration)
-    const [fullName, setFullName] = useState(classToEdit.trainer.fullName);
-    const [speciality, setSpeciality] = useState(classToEdit.trainer.speciality);
-    const [qualification, setQualification] = useState(classToEdit.trainer.qualification);
-    const [gender, setGender] = useState(classToEdit.trainer.gender);
+    // const [fullName, setFullName] = useState(classToEdit.trainer.fullName);
+    // const [speciality, setSpeciality] = useState(classToEdit.trainer.speciality);
+    // const [qualification, setQualification] = useState(classToEdit.trainer.qualification);
+    // const [gender, setGender] = useState(classToEdit.trainer.gender);
 
     // useEffect(() => {
     //     console.log("Inside class to edit: ", classToEdit)
@@ -69,25 +69,25 @@ export default function EditClassForm(props) {
         event.preventDefault()
         setDuration(event.target.value)
     }
-    const handleFullName = (event) => {
-        event.preventDefault()
-        setFullName(event.target.value)
-    }
+    // const handleFullName = (event) => {
+    //     event.preventDefault()
+    //     setFullName(event.target.value)
+    // }
 
-    const handleSpeciality = (event) => {
-        event.preventDefault()
-        setSpeciality(event.target.value)
-    }
+    // const handleSpeciality = (event) => {
+    //     event.preventDefault()
+    //     setSpeciality(event.target.value)
+    // }
 
-    const handleQualification = (event) => {
-        event.preventDefault()
-        setQualification(event.target.value)
-    }
+    // const handleQualification = (event) => {
+    //     event.preventDefault()
+    //     setQualification(event.target.value)
+    // }
 
-    const handleGender = (event) => {
-        event.preventDefault()
-        setGender(event.target.value)
-    }
+    // const handleGender = (event) => {
+    //     event.preventDefault()
+    //     setGender(event.target.value)
+    // }
 
     const handleSubmit = (event) => {
         event.preventDefault()
@@ -99,17 +99,11 @@ export default function EditClassForm(props) {
             classType,
             classStatus,
             classStartDate: date,
-            duration,
-            trainer: {
-                fullName,
-                speciality,
-                qualification,
-                gender,
-            }
+            duration
         }
 
         const fetchOptions = {
-            method: "PUT",
+            method: "PATCH",
             headers: {
                 "Content-Type": "application/json"
             },
@@ -134,6 +128,17 @@ export default function EditClassForm(props) {
             })
     }
 
+    const handleDelete = (event) => {
+
+        fetch(`${API_URL}/classes/${classToEdit.id}`, { method: "DELETE" })
+        // .then((res) => res.json())
+        // .then(() => {
+        //     const updatedClass = classes.filter((classe) => classe.id !== id)
+
+        //     setClasses(updatedClass)
+        navigate(`/classes`)
+        // });
+    };
 
     return (
         <>
@@ -179,41 +184,10 @@ export default function EditClassForm(props) {
                     type="number"
                     value={duration}
                 />
-                <label htmlFor="">Trainer's full name: </label>
-                <input
-                    onChange={handleFullName}
-                    id=""
-                    name=""
-                    type="text"
-                    value={fullName}
-                />
-                <label htmlFor="">Speciality: </label>
-                <input
-                    onChange={handleSpeciality}
-                    id=""
-                    name=""
-                    type="text"
-                    value={speciality}
-                />
-                <label htmlFor="">Qualification: </label>
-                <input
-                    onChange={handleQualification}
-                    id=""
-                    name=""
-                    type="text"
-                    value={qualification}
-                />
-                <label htmlFor="">Gender: </label>
-                <input
-                    onChange={handleGender}
-                    id=""
-                    name=""
-                    type="text"
-                    value={gender}
-                />
                 <button type="submit">
                     Edit Class
         </button>
+                <button onClick={handleDelete}>Delete Class</button>
             </form>
         </>
     )
