@@ -3,6 +3,7 @@ import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 
+
 export default function CreateTrainerForm(props) {
   const { trainers, setTrainers } = props;
 
@@ -58,61 +59,64 @@ export default function CreateTrainerForm(props) {
 
   return (
     <>
+      {/* <header className="header">
+        < Header />
+      </header> */}
       <section className=" padding-sides add-trainer padding two-row-grid">
-      <div>
-      <Box
-        onSubmit={handleSubmit}
-        className=" two-column-grid-expand__right"
-        component="form"
-        sx={{
-          "& .MuiTextField-root": { m: 0, width: "20ch" },
-        }}
-        noValidate
-        autoComplete="of"
-      >
-          <TextField
-            onChange={handleFullName}
-            type="text"
-            required
-            // if(!required){  // working on adding error
+        <div>
+          <Box
+            onSubmit={handleSubmit}
+            className=" two-column-grid-expand__right"
+            component="form"
+            sx={{
+              "& .MuiTextField-root": { m: 0, width: "20ch" },
+            }}
+            noValidate
+            autoComplete="of"
+          >
+            <TextField
+              onChange={handleFullName}
+              type="text"
+              required
+              // if(!required){  // working on adding error
               // error
-            // }
-            id="outlined-required"
-            label="Full Name"
-            defaultValue={fullName}
-            value={fullName}
-          />
-          <TextField
-            required
-            onChange={handleSpeciality}
-            id="outlined-required"
-            label="Speciality"
-            defaultValue={speciality}
-            value={speciality}
-          />
-          <TextField
-            required
-            onChange={handleQualification}
-            id="outlined-required"
-            label="Qualification"
-            defaultValue={qualification}
-            value={qualification}
-          />
-          <TextField
-            required
-            onChange={handleGender}
-            id="outlined-required"
-            label="Gender"
-            defaultValue={gender}
-            value={gender}
-          />
+              // }
+              id="outlined-required"
+              label="Full Name"
+              defaultValue={fullName}
+            // value={fullName}
+            />
+            <TextField
+              required
+              onChange={handleSpeciality}
+              id="outlined-required"
+              label="Speciality"
+              defaultValue={speciality}
+            // value={speciality}
+            />
+            <TextField
+              required
+              onChange={handleQualification}
+              id="outlined-required"
+              label="Qualification"
+              defaultValue={qualification}
+            // value={qualification}
+            />
+            <TextField
+              required
+              onChange={handleGender}
+              id="outlined-required"
+              label="Gender"
+              defaultValue={gender}
+            // value={gender}
+            />
           </Box>
         </div>
-      <div className="grid-gap">
-        <Button variant="contained" onClick={handleSubmit} type="submit">
-          ADD
+        <div className="grid-gap">
+          <Button variant="contained" onClick={handleSubmit} type="submit">
+            ADD
         </Button>
-      </div>
+        </div>
       </section>
     </>
   );

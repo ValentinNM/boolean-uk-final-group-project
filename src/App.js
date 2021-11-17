@@ -10,6 +10,7 @@ import ViewMember from "./Pages/ViewMemeber"
 import EditMember from "./Pages/EditMember";
 import Header from "./components/Header"
 import EditClassForm from "./Pages/EditClassForm";
+import HomePage from "./Pages/HomePage"
 
 
 export default function App() {
@@ -19,8 +20,8 @@ export default function App() {
   const [detailsToEdit, setDetailsToEdit] = useState({})
   const [contactEdit, setContactEdit] = useState(false)
   const [memberToView, setMemberToView] = useState([])
-  const [profile,setProfile ] = useState([]) 
-  const [address,setAddress ] = useState([])
+  const [profile, setProfile] = useState([])
+  const [address, setAddress] = useState([])
 
 
   const API_URL = process.env.REACT_APP_API_URL;
@@ -33,98 +34,82 @@ export default function App() {
     contactEdit
   })
 
-  useEffect(() => {
+  function fetchClasses() {
     fetch(`${API_URL}/classes`)
       .then((res) => res.json())
       .then((classData) => {
         setClasses(classData);
         console.log("Inside Classes Get Fetch: ", classData)
       });
-  }, [])
+  }
 
-  useEffect(() => {
+  function fetchMembers() {
     fetch(`${API_URL}/members`)
       .then((res) => res.json())
       .then((memberData) => {
         setMembers(memberData);
         console.log("Inside Member Get Fetch: ", memberData)
       });
-  }, [])
+  }
 
-  useEffect(() => {
+  function fetchTrainers() {
     fetch(`${API_URL}/trainers`)
       .then((res) => res.json())
       .then((trainerData) => {
         setTrainers(trainerData);
         console.log("Inside Trainer Get Fetch: ", trainerData)
       });
-  }, [])
+  }
 
-  useEffect (() => {
+  function fetchAddress() {
     fetch(`${API_URL}/address`)
-    .then((res) => res.json())
-    .then((addressData) => {
-      setAddress(addressData);
-      console.log("Inside Trainer Get Fetch: ", addressData)
-    });
-  }, [])
+      .then((res) => res.json())
+      .then((addressData) => {
+        setAddress(addressData);
+        console.log("Inside Trainer Get Fetch: ", addressData)
+      });
+  }
 
-  useEffect (() => {
+  function fetchProfile() {
     fetch(`${API_URL}/profile`)
-    .then((res) => res.json())
-    .then((profileData) => {
-      setProfile(profileData);
-      console.log("Inside Trainer Get Fetch: ", profileData)
-    });
+      .then((res) => res.json())
+      .then((profileData) => {
+        setProfile(profileData);
+        console.log("Inside Trainer Get Fetch: ", profileData)
+      });
+  }
+
+  useEffect(() => {
+    fetchClasses();
+    fetchMembers();
+    fetchTrainers();
+    fetchAddress();
+    fetchProfile()
   }, [])
 
   return (
-    <div className="grid-container">
+    <>
       <header className="header">
         < Header />
       </header>
-
-      <aside className="left-aside">
-        <ListOfTrainers trainers={trainers} />
-        <CreateTrainerForm trainers={trainers} setTrainers={setTrainers} />
-
-      </aside>
-      <main className="main">
-        <Routes>
-        {/* <ListOfClasses classes={classes} /> */}
-        {/* <Route path="/create-member" element={<CreateMembers />} /> */}
-        <Route
-        path="/create-member"
-        element={<CreateMembers API_URL={API_URL} members={members} setMembers={setMembers} />}
-        />
-        <Route path="/edit-member" element={<EditMember
-          memberToView={memberToView}
+      <Routes>
+        <Route path="/" element={<HomePage trainers={trainers}
+          setTrainers={setTrainers}
+          classes={classes}
           members={members}
-          setMembers={setMembers} />}
-        />
-      </Routes>
-      </main>
-
-
-      <aside className="right-aside">
-        <ListOfMembers members={members} setMembers={setMembers} API_URL={API_URL} setMemberToView={setMemberToView} />
-        {/* <ViewMember memberToView={memberToView} /> */}
-      </aside>
-
-      {/* <Routes>
-        <Route path="/" />
+          setMemberToView={setMemberToView}
+          memberToView={memberToView} />} />
         <Route path="/create-class" element={<CreateClassForm classes={classes} setClasses={setClasses} />} />
+        <Route path="/create-member" element={<CreateMembers />} />
         <Route path="/view-member" element={<ViewMember memberToView={memberToView} />} />
-        <Route path="/edit-member" element={<EditMember memberToView={memberToView} />} />
+        <Route path="/edit-member" element={<EditMemberForm memberToView={memberToView} />} />
         <Route path="/classes" element={<ListOfClasses classes={classes} />} />
         <Route path="/trainers" element={<ListOfTrainers trainers={trainers} />} />
         <Route path="/create-trainer" element={<CreateTrainerForm trainers={trainers} setTrainers={setTrainers} />} />
         <Route path="/classes/:classId/editclass" element={<EditClassForm classes={classes} setClasses={setClasses} trainers={trainers} setTrainers={setTrainers} />} />
         <Route path="/members" element={<ListOfMembers members={members} setMemberToView={setMemberToView} />} />
-      </Routes> */}
-
-
-    </div>
+      </Routes>
+    </>
   );
 }
 
