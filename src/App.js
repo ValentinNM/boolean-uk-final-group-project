@@ -102,7 +102,7 @@ export default function App() {
         <Route path="/create-class" element={<CreateClassForm classes={classes} setClasses={setClasses} />} />
         <Route path="/create-member" element={<CreateMembers />} />
         <Route path="/view-member" element={<ViewMember memberToView={memberToView} />} />
-        <Route path="/edit-member" element={<EditMember memberToView={memberToView} />} />
+        <Route path="/edit-member" element={<EditMemberForm memberToView={memberToView} />} />
         <Route path="/classes" element={<ListOfClasses classes={classes} />} />
         <Route path="/trainers" element={<ListOfTrainers trainers={trainers} />} />
         <Route path="/create-trainer" element={<CreateTrainerForm trainers={trainers} setTrainers={setTrainers} />} />
