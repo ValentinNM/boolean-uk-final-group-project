@@ -102,10 +102,10 @@ export default function App() {
           classes={classes}
           members={members}
           setMemberToView={setMemberToView}
-          memberToView={memberToView} 
+          memberToView={memberToView}
           trainerToView={trainerToView}
           setTrainerToView={setTrainerToView}
-          />} />
+        />} />
         <Route path="/create-class" element={<CreateClassForm classes={classes} setClasses={setClasses} />} />
         <Route path="/create-member" element={<CreateMembers />} />
         <Route path="/view-member" element={<ViewMember memberToView={memberToView} />} />
@@ -115,7 +115,7 @@ export default function App() {
         <Route path="/create-trainer" element={<CreateTrainerForm trainers={trainers} setTrainers={setTrainers} />} />
         <Route path="/classes/:classId/editclass" element={<EditClassForm classes={classes} setClasses={setClasses} trainers={trainers} setTrainers={setTrainers} />} />
         <Route path="/members" element={<ListOfMembers members={members} setMemberToView={setMemberToView} />} />
-        <Route path="/trainers-page" element={<TrainersPage trainerToView={trainerToView}/>}/>
+        <Route path="/trainers-page" element={<TrainersPage trainerToView={trainerToView} />} />
       </Routes>
       {/* <Route path="/login" element={ <LogIn/> }  */}  // find a way to add without including the header
     </>
