@@ -9,7 +9,6 @@ import CreateMembers from "./Pages/CreateMembers";
 import ViewMember from "./Pages/ViewMemeber"
 import EditMember from "./Pages/EditMember";
 import Header from "./components/Header"
-import Header from "./components/Header"
 import EditClassForm from "./Pages/EditClassForm";
 import HomePage from "./Pages/HomePage"
 import TrainersPage from "./Pages/TrainersPage";

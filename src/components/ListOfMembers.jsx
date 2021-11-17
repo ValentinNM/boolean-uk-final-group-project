@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 export default function ListOfMembers(props) {
 
-  const { members, setMemberToView} = props
+  const {members, setMembers, setMemberToView, API_URL} = props; 
 
   const handleMemberToView = (event, member) => {
     console.log("handleMemberToView: ", member)
