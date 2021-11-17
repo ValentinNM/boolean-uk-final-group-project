@@ -7,9 +7,7 @@ export default function EditClassForm(props) {
 
     const { classId } = useParams();
     const foundClass = classes.find((classe) => {
-        // console.log({ classe });
-        // console.log({ id: classe.id })
-        // console.log(classe.id === parseInt(classId))
+      
         return classe.id === parseInt(classId)
     })
 
@@ -25,25 +23,7 @@ export default function EditClassForm(props) {
     const [classStatus, setClassStatus] = useState(classToEdit.classStatus)
     const [classStartDate, setClassStartDate] = useState(new Date().toDateString())
     const [duration, setDuration] = useState(classToEdit.duration)
-    // const [fullName, setFullName] = useState(classToEdit.trainer.fullName);
-    // const [speciality, setSpeciality] = useState(classToEdit.trainer.speciality);
-    // const [qualification, setQualification] = useState(classToEdit.trainer.qualification);
-    // const [gender, setGender] = useState(classToEdit.trainer.gender);
-
-    // useEffect(() => {
-    //     console.log("Inside class to edit: ", classToEdit)
-    //     if (classToEdit) {
-    //         setClassName(classToEdit.className)
-    //         setClassType(classToEdit.classType)
-    //         setClassStatus(classToEdit.classStatus)
-    //         setClassStartDate(classToEdit.setClassStartDate)
-    //         setDuration(classToEdit.duration)
-    //         setFullName(classToEdit.fullName)
-    //         setSpeciality(classToEdit.speciality)
-    //         setQualification(classToEdit.qualification)
-    //         setGender(classToEdit.gender)
-    //     }
-    // }, [classToEdit])
+    
 
     const handleClassName = (event) => {
         event.preventDefault()
@@ -69,26 +49,7 @@ export default function EditClassForm(props) {
         event.preventDefault()
         setDuration(event.target.value)
     }
-    // const handleFullName = (event) => {
-    //     event.preventDefault()
-    //     setFullName(event.target.value)
-    // }
-
-    // const handleSpeciality = (event) => {
-    //     event.preventDefault()
-    //     setSpeciality(event.target.value)
-    // }
-
-    // const handleQualification = (event) => {
-    //     event.preventDefault()
-    //     setQualification(event.target.value)
-    // }
-
-    // const handleGender = (event) => {
-    //     event.preventDefault()
-    //     setGender(event.target.value)
-    // }
-
+  
     const handleSubmit = (event) => {
         event.preventDefault()
 
@@ -135,7 +96,7 @@ export default function EditClassForm(props) {
         // .then(() => {
         //     const updatedClass = classes.filter((classe) => classe.id !== id)
 
-        //     setClasses(updatedClass)
+        //     setClasses(...updatedClass)
         navigate(`/classes`)
         // });
     };

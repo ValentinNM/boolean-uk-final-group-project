@@ -11,6 +11,7 @@ import EditMemberForm from "./Pages/EditMemberForm";
 import Header from "./components/Header"
 import EditClassForm from "./Pages/EditClassForm";
 import HomePage from "./Pages/HomePage"
+import TrainersPage from "./Pages/TrainersPage";
 
 
 export default function App() {
@@ -20,6 +21,7 @@ export default function App() {
   const [detailsToEdit, setDetailsToEdit] = useState({})
   const [contactEdit, setContactEdit] = useState(false)
   const [memberToView, setMemberToView] = useState([])
+  const [trainerToView, setTrainerToView] = useState([])
   const [profile, setProfile] = useState([])
   const [address, setAddress] = useState([])
 
@@ -98,7 +100,10 @@ export default function App() {
           classes={classes}
           members={members}
           setMemberToView={setMemberToView}
-          memberToView={memberToView} />} />
+          memberToView={memberToView} 
+          trainerToView={trainerToView}
+          setTrainerToView={setTrainerToView}
+          />} />
         <Route path="/create-class" element={<CreateClassForm classes={classes} setClasses={setClasses} />} />
         <Route path="/create-member" element={<CreateMembers />} />
         <Route path="/view-member" element={<ViewMember memberToView={memberToView} />} />
@@ -108,6 +113,7 @@ export default function App() {
         <Route path="/create-trainer" element={<CreateTrainerForm trainers={trainers} setTrainers={setTrainers} />} />
         <Route path="/classes/:classId/editclass" element={<EditClassForm classes={classes} setClasses={setClasses} trainers={trainers} setTrainers={setTrainers} />} />
         <Route path="/members" element={<ListOfMembers members={members} setMemberToView={setMemberToView} />} />
+        <Route path="/trainers-page" element={<TrainersPage trainerToView={trainerToView}/>}/>
       </Routes>
     </>
   );

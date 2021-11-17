@@ -10,7 +10,7 @@ export default function ViewMember(props) {
   const { city, country, houseNumber, postcode, streetName } = address;
 
   return (
-    <section className="all-member-details-container two-column-grid-forms">
+    <section className="all-member-details-container center-style two-column-grid-forms">
       <ul>
         <li>
           <div className="member-main-details">
@@ -35,6 +35,9 @@ export default function ViewMember(props) {
             </Button>
             <Button variant="container"> DELETE </Button>
           </div>
+          <Button variant="container">
+              <Link to="/">Back To Home</Link>
+            </Button>
         </li>
       </ul>
     </section>
