@@ -3,53 +3,49 @@ import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 
-export default function (props) {
+export default function CreateMember(props) {
   const { API_URL } = props;
 
   const [memberToCreate, setMemberToCreate] = useState({
     userName: "",
     membershipType: "",
-    membershipStatus: "",
-    picture: "smth",
-    firstName: "",
-    lastname: "",
+    membershipStatus: ""
+  });
+const [profileToCreate, setProfileToCreate] = useState({
+  picture: "smth",
+  firstName: "",
+  lastname: ""
+})
+const [addressToCreate, setAddressToCreate] = useState({
     houseNumber: 0,
     streetName: "",
     city: "",
     postcode: "",
     country: "",
-  });
+})
 
   const handleSubmit = (event) => {
     console.log("Submiting form");
     event.preventDefault();
 
-    const newMemeber = {
-      userName: memberToCreate.userName,
-      membershipType: memberToCreate.membershipType,
-      membershipStatus: memberToCreate.membershipStatus,
+    const newMember = {
+      ...memberToCreate,
       profile: {
-        picture: memberToCreate.picture,
-        firstName: memberToCreate.firstName,
-        lastname: memberToCreate.lastname,
+        ...profileToCreate,
         address: {
-          houseNumber: memberToCreate.houseNumber,
-          streetName: memberToCreate.streetName,
-          city: memberToCreate.city,
-          postcode: memberToCreate.postcode,
-          country: memberToCreate.country,
-        },
-      },
-    };
+          ...addressToCreate
+        }
+      }
+      }
 
-    console.log("newMemeber: ", newMemeber);
+    console.log("newMember: ", newMember);
 
     const fetchOptions = {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(newMemeber),
+      body: JSON.stringify(newMember),
     };
 
     fetch(`${API_URL}/members/add`, fetchOptions)
@@ -71,7 +67,15 @@ export default function (props) {
       [inputName]: event.target.value,
     });
 
-    console.log("memberToCreate: ", memberToCreate);
+    setProfileToCreate({
+      ...profileToCreate,
+      [inputName]: event.target.value,
+    })
+
+    setAddressToCreate({
+      ...addressToCreate,
+      [inputName]: event.target.value,
+    })
   };
 
   return (
@@ -183,11 +187,6 @@ export default function (props) {
           </div>
         </Box>
       </div>
-      {/* <div className="grid-gap">
-        <Button variant="contained" type="submit">
-          ADD
-        </Button>
-      </div> */}
     </section>
   );
 }

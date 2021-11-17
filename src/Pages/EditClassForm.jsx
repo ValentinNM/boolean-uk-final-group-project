@@ -121,6 +121,7 @@ export default function EditClassForm(props) {
             .then((classToUpdate) => {
                 console.log("Updated class", classToUpdate);
 
+                // const updatedClass = classes.map(classe => classToUpdate.id === classe.id ? classToUpdate : classe);  // ternary way
                 const updatedClass = classes.map((classe) => {
                     if (classToUpdate.id === classe.id) {
                         return classToUpdate;
@@ -128,6 +129,7 @@ export default function EditClassForm(props) {
                         return classe
                     }
                 });
+
 
                 setClasses(updatedClass)
                 navigate(`/classes`)

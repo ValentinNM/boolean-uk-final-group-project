@@ -7,7 +7,8 @@ import ListOfMembers from "./components/ListOfMembers";
 import ListOfTrainers from "./components/ListOfTrainers";
 import CreateMembers from "./Pages/CreateMembers";
 import ViewMember from "./Pages/ViewMemeber"
-import EditMember from "./Pages/EditMemberForm";
+import EditMemberForm from "./Pages/EditMemberForm";
+import EditMember from "./Pages/EditMember";
 import Header from "./components/Header"
 import EditClassForm from "./Pages/EditClassForm";
 
