@@ -7,7 +7,7 @@ import ListOfMembers from "./components/ListOfMembers";
 import ListOfTrainers from "./components/ListOfTrainers";
 import CreateMembers from "./Pages/CreateMembers";
 import ViewMember from "./Pages/ViewMemeber"
-import EditMember from "./Pages/EditMemberForm";
+import EditMemberForm from "./Pages/EditMemberForm";
 import Header from "./components/Header"
 import EditClassForm from "./Pages/EditClassForm";
 
@@ -19,7 +19,9 @@ export default function App() {
   const [detailsToEdit, setDetailsToEdit] = useState({})
   const [contactEdit, setContactEdit] = useState(false)
   const [memberToView, setMemberToView] = useState([])
-
+  const [profile, setProfile] = useState([])
+  const [address, setAddress] = useState([])
+ 
 
   const API_URL = process.env.REACT_APP_API_URL;
 
@@ -31,50 +33,58 @@ export default function App() {
     contactEdit
   })
 
-  useEffect(() => {
+  function fetchClasses() {
     fetch(`${API_URL}/classes`)
       .then((res) => res.json())
       .then((classData) => {
         setClasses(classData);
         console.log("Inside Classes Get Fetch: ", classData)
       });
-  }, [])
+  }
 
-  useEffect(() => {
+  function fetchMembers() {
     fetch(`${API_URL}/members`)
       .then((res) => res.json())
       .then((memberData) => {
         setMembers(memberData);
         console.log("Inside Member Get Fetch: ", memberData)
       });
-  }, [])
+  }
 
-  useEffect(() => {
+  function fetchTrainers() {
     fetch(`${API_URL}/trainers`)
       .then((res) => res.json())
       .then((trainerData) => {
         setTrainers(trainerData);
         console.log("Inside Trainer Get Fetch: ", trainerData)
       });
-  }, [])
+  }
 
-  useEffect (() => {
+function fetchAddress() {
     fetch(`${API_URL}/address`)
     .then((res) => res.json())
     .then((addressData) => {
-      setTrainers(addressData);
+      setAddress(addressData);
       console.log("Inside Trainer Get Fetch: ", addressData)
     });
-  }, [])
+  }
 
-  useEffect (() => {
+function fetchProfile() {
     fetch(`${API_URL}/profile`)
     .then((res) => res.json())
     .then((profileData) => {
-      setTrainers(profileData);
+      setProfile(profileData);
       console.log("Inside Trainer Get Fetch: ", profileData)
     });
-  }, [])
+  }
+
+  useEffect(() => {
+    fetchClasses();
+    fetchMembers();
+    fetchTrainers();
+    fetchAddress();
+    fetchProfile()
+}, [])
 
   return (
     <div className="grid-container">
@@ -95,7 +105,7 @@ export default function App() {
 
       <aside className="right-aside">
         <ListOfMembers members={members} setMemberToView={setMemberToView} />
-        {/* <ViewMember memberToView={memberToView} /> */}
+        <EditMemberForm members={members} />
 
       </aside>
 
