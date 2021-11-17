@@ -86,29 +86,36 @@ select {
   border-radius: 4px;
   padding: 8px;
 }
+.center-style {
+  border: 1px solid rgb(17, 1, 1);
+  border-radius: 8px;
+  max-width: 40ch;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1rem;
+  border-radius: 1rem;
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+}
 
 .grid-container {
-  /* min-width: 100vw; => maybe to be removed */ 
   max-height: 100vh;
   display: grid;
   grid-template:
     "header header header header header" 75px
     ". left-aside main right-aside ." 1fr /
     0.125fr 1fr 2fr 1fr 0.125fr;
-  gap: 5px;
-  /*
-  => SPARES <=
+  gap: 5px; 
+  /* => SPARES <=
   background: linear-gradient(to right, #2c3e50, #bdc3c7);
   background: linear-gradient(to right, #FFFFFF, #6DD5FA, #2980B9); 
-  background: linear-gradient(to right, #E1F5C4, #EDE574);
-  */
-background: linear-gradient(to right, #7AA1D2, #DBD4B4, #CC95C0);
+  background: linear-gradient(to right, #E1F5C4, #EDE574); */
+  background: linear-gradient(to right, #7AA1D2, #DBD4B4, #CC95C0);
 
 }
 
 .header {
   grid-area: header;
-  /* border: 1px dotted black; */
 }
 
 .logo { 
@@ -118,7 +125,6 @@ background: linear-gradient(to right, #7AA1D2, #DBD4B4, #CC95C0);
 /* LEFT ASIDE => TRAINERS */
 .left-aside {
   grid-area: left-aside;
-  /* border: 1px dotted black; */
 }
 
 .trainers-list {
@@ -155,7 +161,6 @@ background: linear-gradient(to right, #7AA1D2, #DBD4B4, #CC95C0);
   max-height: 87vh ;
   overflow-x: hidden;
   overflow-y: auto;
-  /* gap:10px; */
 }
 
 .classes-list::-webkit-scrollbar{ /* removes the scrollbar, though still scrolable */
@@ -171,7 +176,6 @@ background: linear-gradient(to right, #7AA1D2, #DBD4B4, #CC95C0);
 /* RIGHT ASIDE => MEMBERS LIST */
 .right-aside {
   grid-area: right-aside;
-  /* border: 1px dotted black; */
 }
 .members-list { 
   display: grid;
@@ -221,17 +225,16 @@ background: linear-gradient(to right, #7AA1D2, #DBD4B4, #CC95C0);
 }
 .two-row-grid {
   display: grid;
-  /* grid-template-columns: 1fr auto; */
   grid-template-rows: 1fr auto;
   gap: 5px;
 }
 .cards {
   display: grid;
+  grid-auto-rows: minmax(30px, auto);
   grid-template-columns: repeat(auto-fill, 275px);
   gap: 15px;
   justify-content: center;
   justify-items: center;
-  /* padding: 24px 0; */
   margin-bottom: 24px;
 }
 
@@ -253,7 +256,7 @@ background: linear-gradient(to right, #7AA1D2, #DBD4B4, #CC95C0);
   padding: 10px;
 }
 
-.padding-left{
+/* .padding-left{
   padding-left: 10x;
 }
 
@@ -272,3 +275,20 @@ background: linear-gradient(to right, #7AA1D2, #DBD4B4, #CC95C0);
   justify-content: center;
   grid-row-gap: 30px;
 }
+
+
+.four-column-grid {
+  display: grid;
+  grid-template-columns: repeat(5, auto);
+}
+
+.classes-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(225px, 1fr));
+  margin: 0;
+  padding: 0;
+  /* padding-left: 25px; */
+  /* background: linear-gradient(90deg, #3f5efb 0%, #fc466b 100%); */
+  place-items: center;
+}
+

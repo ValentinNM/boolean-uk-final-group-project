@@ -58,7 +58,7 @@ export default function EditMemberForm(props) {
       .then((updatedMember) => {
         console.log("INside updated member: ", updatedMember);
 
-        const membershipUpdate = members.msp((member) => {
+        const membershipUpdate = members.map((member) => {
           if (member.id === contactEdit.id) {
             return {
               ...updatedMember,

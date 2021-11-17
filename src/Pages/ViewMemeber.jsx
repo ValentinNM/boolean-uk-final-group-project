@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import Button from "@mui/material/Button";
 
@@ -8,9 +7,9 @@ export default function ViewMember(props) {
   const { userName, membershipType, membershipStatus, profile } = memberToView;
   const { firstName, lastname, address } = profile;
   const { city, country, houseNumber, postcode, streetName } = address;
-  
+
   return (
-    <section className="switch-centre-container">
+    <section className="all-member-details-container center-style two-column-grid-forms">
       <ul>
         <li className ="two-column-grid-expand__right">
             <div className="view-member-details">
@@ -40,10 +39,13 @@ export default function ViewMember(props) {
             </div>
           <div className="one-class-dashboard-buttons">
             <Button variant="container">
-                <Link to="/edit-member">EDIT</Link>
+              <Link to="/edit-member">EDIT</Link>
             </Button>
             <Button variant="container"> DELETE </Button>
           </div>
+          <Button variant="container">
+              <Link to="/">Back To Home</Link>
+            </Button>
         </li>
       </ul>
     </section>
