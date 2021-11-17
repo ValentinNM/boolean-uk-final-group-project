@@ -8,10 +8,12 @@ import ListOfTrainers from "./components/ListOfTrainers";
 import CreateMembers from "./Pages/CreateMembers";
 import ViewMember from "./Pages/ViewMemeber"
 import EditMember from "./Pages/EditMember";
+import EditMemberForm from "./Pages/EditMemberForm";
 import Header from "./components/Header"
 import EditClassForm from "./Pages/EditClassForm";
 import HomePage from "./Pages/HomePage"
 import TrainersPage from "./Pages/TrainersPage";
+import LogIn from "./components/LogIn";
 
 
 export default function App() {
@@ -115,6 +117,7 @@ export default function App() {
         <Route path="/members" element={<ListOfMembers members={members} setMemberToView={setMemberToView} />} />
         <Route path="/trainers-page" element={<TrainersPage trainerToView={trainerToView}/>}/>
       </Routes>
+      {/* <Route path="/login" element={ <LogIn/> }  */}  // find a way to add without including the header
     </>
   );
 }

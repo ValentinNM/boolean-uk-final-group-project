@@ -1,22 +1,34 @@
-import { navigate } from "react-router-dom";
+import { useState } from "react";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import { useNavigate } from "react-router-dom";
+
 export default function LogIn() {
+  const navigate = useNavigate();
 
+  const [inputPassword, setInputPassword] = useState("")
 
-const navigate = useNavigate();
+  const handleSubmit = (event) => {
+    event.preventDefault();
 
-    const handleSubmit = (event) => { 
-        event.preventDefault();
+    const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD
 
-        if(password="123456!"){
-            navigate("/dashoard")
-        } else { 
-            // here can do pop up for the
-        }
+    if (inputPassword === ADMIN_PASSWORD) {
+      navigate("/dashoard");
+    } else {
+      // here can do pop up for the
     }
+  };
+
+  const handleInput = (event) => {
+    const inputType = event.target.type;
+    const inputValue = event.target.value;
+
+    if ((inputValue = "password")) {
+      setInputPassword(inputValue);
+    }
+  };
 
   return (
     <section className="login-body">
