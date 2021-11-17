@@ -92,36 +92,13 @@ export default function App() {
       <header className="header">
         < Header />
       </header>
-<<<<<<< HEAD
-  <Routes>
-    <Route path="/" element={<HomePage trainers={trainers}
-      setTrainers={setTrainers}
-      classes={classes}
-      members={members}
-      setMemberToView={setMemberToView}
-      memberToView={memberToView} />} />
-=======
-
-      <aside className="left-aside">
-      <ListOfTrainers trainers={trainers} />
-      <CreateTrainerForm trainers={trainers} setTrainers={setTrainers} />
-
-    </aside>
-    <main className="main">
-      <ListOfClasses classes={classes} />
-
-    </main>
-
-
-    <aside className="right-aside">
-      <ListOfMembers members={members} setMemberToView={setMemberToView} />
-      <EditMemberForm members={members} />
-
-    </aside>
-
-    {/* <Routes>
-        <Route path="/" />
->>>>>>> 468f341e2f343d7c10540f94ce65f1c62231c737
+      <Routes>
+        <Route path="/" element={<HomePage trainers={trainers}
+          setTrainers={setTrainers}
+          classes={classes}
+          members={members}
+          setMemberToView={setMemberToView}
+          memberToView={memberToView} />} />
         <Route path="/create-class" element={<CreateClassForm classes={classes} setClasses={setClasses} />} />
         <Route path="/create-member" element={<CreateMembers />} />
         <Route path="/view-member" element={<ViewMember memberToView={memberToView} />} />
