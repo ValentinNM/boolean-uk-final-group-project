@@ -4,7 +4,9 @@ import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 
 export default function CreateMember(props) {
-  const { API_URL, members, setMembers } = props;
+  const { members, setMembers } = props;
+
+  const API_URL = process.env.REACT_APP_API_URL;
 
   const [memberToCreate, setMemberToCreate] = useState({
     userName: "",

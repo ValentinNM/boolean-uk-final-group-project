@@ -84,20 +84,21 @@ export default function App() {
           setTrainers={setTrainers}
           classes={classes}
           members={members}
+          setMembers={setMembers}
           setMemberToProcess={setMemberToProcess}
           memberToProcess={memberToProcess}
           trainerToView={trainerToView}
           setTrainerToView={setTrainerToView}
         />} />
         <Route path="/create-class" element={<CreateClassForm classes={classes} setClasses={setClasses} />} />
-        <Route path="/create-member" element={<CreateMember />} />
-        <Route path="/view-member" element={<ViewMember memberToProcess={memberToProcess} />} />
+        <Route path="/create-member" element={<CreateMember members={members} setMembers={setMembers}  />} />
+        <Route path="/view-member" element={<ViewMember memberToProcess={memberToProcess} setMembers={setMembers} members={members} />} />
         <Route path="/edit-member" element={<EditMemberForm memberToProcess={memberToProcess} members={members} setMembers={setMembers} />} />
         <Route path="/classes" element={<ListOfClasses classes={classes} />} />
         <Route path="/trainers" element={<ListOfTrainers trainers={trainers} />} />
         <Route path="/create-trainer" element={<CreateTrainerForm trainers={trainers} setTrainers={setTrainers} />} />
         <Route path="/classes/:classId/editclass" element={<EditClassForm classes={classes} setClasses={setClasses} trainers={trainers} setTrainers={setTrainers} />} />
-        <Route path="/members" element={<ListOfMembers members={members} setMemberToProcess={setMemberToProcess} />} />
+        <Route path="/members" element={<ListOfMembers members={members} setMembers={setMembers} setMemberToProcess={setMemberToProcess} />} />
         <Route path="/trainers-page" element={<TrainersPage trainerToView={trainerToView} />} />
       </Routes>
       {/* <Route path="/login" element={ <LogIn/> }  */}

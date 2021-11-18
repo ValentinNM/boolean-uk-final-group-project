@@ -6,7 +6,7 @@ import ListOfMembers from "../components/ListOfMembers"
 
 export default function HomePage(props) {
 
-    const { trainers, setTrainers, classes, members, setMemberToProcess, memberToProcess } = props
+    const { trainers, setTrainers, classes, members, setMemberToProcess, memberToProcess, setMembers } = props
 
 
     return (
@@ -23,7 +23,7 @@ export default function HomePage(props) {
                 </main>
 
                 <aside className="right-aside">
-                    <ListOfMembers members={members} memberToProcess={memberToProcess} setMemberToProcess={setMemberToProcess} />
+                    <ListOfMembers members={members} memberToProcess={memberToProcess} setMembers={setMembers} setMemberToProcess={setMemberToProcess} />
                     {/* <ViewMember memberToProcess={memberToProcess} /> */}
 
                 </aside>

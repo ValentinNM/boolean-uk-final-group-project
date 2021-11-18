@@ -15,9 +15,13 @@ export default function ListOfMembers(props) {
 
     setMemberToProcess(member)
     console.log("member : ", member);
-    fetch(`${API_URL}/members/${member.id}`, { method: "DELETE" });
+    fetch(`${API_URL}/members/${member.id}`, { method: "DELETE" })
+    .then( () => { 
 
-    setMembers(...members);
+      const removeDeletedMember = members.filter((m) => m.id !== member.id )
+
+      setMembers([...removeDeletedMember]);
+    })
   };
 
   return (
