@@ -1,9 +1,11 @@
 import { useState } from "react";
 import Header from "../components/Header"
+import {useNavigate} from "react-router-dom"
 
 export default function CreateClassForm(props) {
     const { classes, setClasses } = props
 
+    const navigate = useNavigate()
     console.log("classes", classes)
 
     const [className, setClassName] = useState("")
@@ -69,6 +71,7 @@ export default function CreateClassForm(props) {
                 }
                 console.log("New class", newClass)
                 setClasses([...classes, classToAdd])
+                navigate(`/classes`)
             })
     }
 
