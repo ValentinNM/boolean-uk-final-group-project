@@ -80,14 +80,12 @@ const [addressToCreate, setAddressToCreate] = useState({
   };
 
   return (
-    // <section className="center-style background">
     <section className="center-style-member-forms">
       <div className=" padding-bottom available-classes">
         <h2> Enroll member </h2>
       </div>
         <Box
           onSubmit={handleSubmit}
-          // className="two-column-grid-expand__right"
           component="form"
           sx={{
             "& .MuiTextField-root": { m: 1, width: "25ch" },

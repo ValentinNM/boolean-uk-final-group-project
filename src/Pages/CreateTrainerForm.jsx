@@ -3,7 +3,6 @@ import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 
-
 export default function CreateTrainerForm(props) {
   const { trainers, setTrainers } = props;
 
@@ -48,20 +47,15 @@ export default function CreateTrainerForm(props) {
     fetch("http://localhost:3030/trainers", fetchTrainer)
       .then((res) => res.json())
       .then((newtrainer) => {
-        // console.log("trainer POST request: ", newtrainer);
         const trainerToAdd = {
           ...newtrainer,
         };
         setTrainers([...trainers, trainerToAdd]);
       });
-    // console.log("Inside handle submit: ", handleSubmit);
   };
 
   return (
     <>
-      {/* <header className="header">
-        < Header />
-      </header> */}
       <section className=" padding-sides add-trainer padding two-row-grid">
         <div>
           <Box
@@ -78,13 +72,9 @@ export default function CreateTrainerForm(props) {
               onChange={handleFullName}
               type="text"
               required
-              // if(!required){  // working on adding error
-              // error
-              // }
               id="outlined-required"
               label="Full Name"
               defaultValue={fullName}
-            // value={fullName}
             />
             <TextField
               required
@@ -92,7 +82,6 @@ export default function CreateTrainerForm(props) {
               id="outlined-required"
               label="Speciality"
               defaultValue={speciality}
-            // value={speciality}
             />
             <TextField
               required
@@ -100,7 +89,6 @@ export default function CreateTrainerForm(props) {
               id="outlined-required"
               label="Qualification"
               defaultValue={qualification}
-            // value={qualification}
             />
             <TextField
               required
@@ -108,14 +96,13 @@ export default function CreateTrainerForm(props) {
               id="outlined-required"
               label="Gender"
               defaultValue={gender}
-            // value={gender}
             />
           </Box>
         </div>
         <div className="grid-gap">
           <Button variant="contained" onClick={handleSubmit} type="submit">
-            ADD
-        </Button>
+            ADD TRAINER
+          </Button>
         </div>
       </section>
     </>
