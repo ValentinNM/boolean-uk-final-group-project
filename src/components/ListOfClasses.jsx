@@ -1,7 +1,5 @@
 import Button from '@mui/material/Button';
-import { red } from '@mui/material/colors';
 import { useNavigate } from "react-router-dom";
-import Header from "../components/Header"
 
 export default function ListOfClasses(props) {
 
@@ -13,11 +11,8 @@ export default function ListOfClasses(props) {
 
   return (
     <>
-      {/* <header className="header">
-        < Header />
-      </header> */}
       <main className="">
-        <h2 className="padding-left"> List Of Classes</h2>
+        <h2 className="padding"> List Of Classes</h2>
         <ul className="cards padding classes-list">
 
           {props.classes.map((oneClass, index) => {

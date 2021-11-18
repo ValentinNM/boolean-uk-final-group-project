@@ -2,11 +2,27 @@ import { Link } from "react-router-dom";
 import Button from "@mui/material/Button";
 
 export default function ViewMember(props) {
-  const { memberToView } = props;
 
-  const { userName, membershipType, membershipStatus, profile } = memberToView;
+  const { memberToProcess, setMembers, members } = props;
+
+  console.log("VIEW memberToProcess: ", memberToProcess)
+
+  const API_URL = process.env.REACT_APP_API_URL;
+
+  const { userName, membershipType, membershipStatus, profile, id } = memberToProcess;
   const { firstName, lastname, address } = profile;
   const { city, country, houseNumber, postcode, streetName } = address;
+
+  const handleDelete = (event) => {
+    console.log("member id : ", id);
+    fetch(`${API_URL}/members/${id}`,({ method: "DELETE" }))
+    .then((res) => res.json())
+    .then((response) => { 
+
+    })
+    
+    setMembers(members)
+  }
 
   return (
     <section className="all-member-details-container center-style two-column-grid-forms">
@@ -34,18 +50,24 @@ export default function ViewMember(props) {
           </div>
             </div>
             <div className="member-avatar">
-                <img src={profile.picture} alt="member-picture" />
-                {/* change avatar */}
+                <img src={profile.picture} alt="member-avatar" />
             </div>
           <div className="one-class-dashboard-buttons">
             <Button variant="container">
               <Link to="/edit-member">EDIT</Link>
             </Button>
-            <Button variant="container"> DELETE </Button>
+            <Button variant="container"
+            // onClick={(e)=> handleDelete(e, memberToProcess)}
+            onClick={handleDelete}
+            >
+              <Link to="/">
+               DELETE 
+              </Link>
+               </Button>
           </div>
-          <Button variant="container">
-              <Link to="/">Back To Home</Link>
-            </Button>
+          {/* <Button variant="container">
+              <Link to="/">Back To Home</Link>   // already having the header to take us home
+            </Button> */}
         </li>
       </ul>
     </section>

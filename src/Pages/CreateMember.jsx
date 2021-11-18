@@ -3,7 +3,7 @@ import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 
-export default function (props) {
+export default function CreateMember(props) {
   const { API_URL, members, setMembers } = props;
 
   const [memberToCreate, setMemberToCreate] = useState({
@@ -38,7 +38,7 @@ const [addressToCreate, setAddressToCreate] = useState({
       }
       }
 
-    console.log("newMember: ", newMember);
+    console.log("newMember on handleSubmit: ", newMember);
 
     const fetchOptions = {
       method: "POST",
@@ -51,7 +51,7 @@ const [addressToCreate, setAddressToCreate] = useState({
     fetch(`${API_URL}/members/add`, fetchOptions)
       .then((res) => res.json())
       .then((newAddedMemeber) => {
-        console.log("newAddedMemeber: ", newAddedMemeber);
+        console.log("newAddedMemeber inside fetch: ", newAddedMemeber);
         setMembers([...members, newAddedMemeber])
       });
   };
@@ -65,7 +65,7 @@ const [addressToCreate, setAddressToCreate] = useState({
 
     setMemberToCreate({
       ...memberToCreate,
-      [inputName]: event.target.value,
+      [inputName]: inputValue,
     });
 
     setProfileToCreate({
