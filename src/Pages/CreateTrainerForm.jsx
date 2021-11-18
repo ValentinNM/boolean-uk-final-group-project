@@ -100,7 +100,7 @@ export default function CreateTrainerForm(props) {
           </Box>
         </div>
         <div className="grid-gap">
-          <Button variant="contained" onClick={handleSubmit} type="submit">
+          <Button variant="outlined" onClick={handleSubmit} type="submit">
             ADD TRAINER
           </Button>
         </div>

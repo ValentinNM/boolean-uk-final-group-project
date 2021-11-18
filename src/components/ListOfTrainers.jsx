@@ -30,9 +30,9 @@ export default function ListOfTrainers(props) {
                 <p>Gender: {gender}</p>
                 </div>
                 <div>
-                <Button variant="contained"
+                <Button 
+                    variant="outlined"
                     onClick={(e) => handleTrainerToView(e, trainer)}
-                    // <Link to="/trainers-page">
                       >VIEW 
                 </Button>
                 </div>

@@ -2,17 +2,21 @@ import ListOfTrainers from "../components/ListOfTrainers"
 import CreateTrainerForm from "../Pages/CreateTrainerForm"
 import ListOfClasses from "../components/ListOfClasses"
 import ListOfMembers from "../components/ListOfMembers"
-
-export default function HomePage(props) {
-
-    const { trainers, setTrainers, classes, members, setMemberToProcess, memberToProcess, setMembers, setTrainerToView } = props
-// import ViewMember from "../Pages/ViewMemeber"
 import { useNavigate } from "react-router-dom";
-import Button from "@mui/material/Button";
 
 export default function HomePage(props) {
 
-    const { trainers, setTrainers, classes, members, setMemberToProcess, memberToProcess, setMembers } = props
+    const { trainers,
+        setTrainers,
+        classes,
+        members,
+        setMemberToProcess,
+        memberToProcess,
+        setMembers,
+        setTrainerToView,
+        setClassToProcess,
+        setClasses={setClasses}
+    } = props
 
     const navigate = useNavigate();
 
@@ -26,8 +30,7 @@ export default function HomePage(props) {
                 </aside>
 
                 <main className="main">
-                    <ListOfClasses classes={classes} />
-                    <Button onClick={() => navigate(`/create-class`)}>Create Class</Button>
+                    <ListOfClasses classes={classes} setClassToProcess={setClassToProcess} setClasses={setClasses} />
                 </main>
 
                 <aside className="right-aside">
