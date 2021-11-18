@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import Button from "@mui/material/Button";
+import Box from "@mui/material/Box";
+import TextField from "@mui/material/TextField";
 
 export default function EditClassForm(props) {
     const { classes, setClasses, trainers, setTrainers } = props
@@ -24,7 +27,6 @@ export default function EditClassForm(props) {
     const [classStartDate, setClassStartDate] = useState(new Date().toDateString())
     const [duration, setDuration] = useState(classToEdit.duration)
     
-
     const handleClassName = (event) => {
         event.preventDefault()
         setClassName(event.target.value)
@@ -94,12 +96,12 @@ export default function EditClassForm(props) {
 
         fetch(`${API_URL}/classes/${classToEdit.id}`, { method: "DELETE" })
         // .then((res) => res.json())
-        // .then(() => {
-        //     const updatedClass = classes.filter((classe) => classe.id !== id)
+        .then(() => {
+            const updatedClasses = classes.filter((oneClass) => oneClass.id !== classToEdit.id)
 
-        //     setClasses(...updatedClass)
+            setClasses([...updatedClasses])
         navigate(`/classes`)
-        // });
+        });
     };
 
     return (
@@ -108,8 +110,67 @@ export default function EditClassForm(props) {
             <h2>Edit Class</h2>
             </div>
 
+            <div>
+        <Box
+        onSubmit={handleSubmit} className="form-stack"
+          component="form"
+          sx={{
+            "& .MuiTextField-root": { m: 1, width: "25ch" },
+          }}
+          noValidate
+          autoComplete="of"
+        >
+          <TextField
+            name="className"
+            label="Name"
+            onChange={handleClassName}
+            type="text"
+            value={className}
+            />
+            <TextField
+            name="classType"
+            label="Type"
+            onChange={handleClassType}
+            type="text"
+            value={classType}
+            />
+            <TextField
+            type="text"
+            name="classStatus"
+            label="Status"
+            onChange={handleClassStatus}
+            value={classStatus}
+            />
+            <TextField
+            name="classStartDate"
+            label="Start Date"
+            onChange={handleClassStartDate}
+            type="datetime-local"
+            value={classStartDate}
+            />
+            <TextField
+            name="classStatus"
+            label="Duration"
+            onChange={handleDuration}
+            type="number"
+            value={duration}
+            />
+         </Box>
+            </div>
+          <div className="align-buttons-end">
+          <Button 
+                variant="outlined"
+                type="submit">
+                    Update
+        </Button>
+                <Button
+                type="text"
+                color="secondary"
+                onClick={handleDelete}> 🗑 </Button>
+      
+          </div>
 
-            <form onSubmit={handleSubmit} className="form-stack">
+            {/* <form onSubmit={handleSubmit} className="form-stack">
                 <label htmlFor="">Class Name: </label>
                 <input
                     onChange={handleClassName}
@@ -150,11 +211,16 @@ export default function EditClassForm(props) {
                     type="number"
                     value={duration}
                 />
-                <button type="submit">
-                    Edit Class
+                <button 
+                variant="outlined"
+                type="submit">
+                    Update
         </button>
-                <button onClick={handleDelete}>Delete Class</button>
-            </form>
+                <button
+                type="text"
+                color="secondary"
+                onClick={handleDelete}> 🗑 </button>
+            </form> */}
             </section>
     )
 }

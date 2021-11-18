@@ -166,6 +166,7 @@ export default function EditMemberForm(props) {
             name="membershipType"
             value={membershipType}
             onChange={handleMembershipType}
+            label="Membership Type"
           />
           <TextField
             type="text"
@@ -173,6 +174,7 @@ export default function EditMemberForm(props) {
             name="membershipStatus"
             value={membershipStatus}
             onChange={handleMembershipStatus}
+            label="Membership Status"
           />
           <div>
             <h3>Profile Details:</h3>

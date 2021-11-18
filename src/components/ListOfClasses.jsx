@@ -45,20 +45,20 @@ export default function ListOfClasses(props) {
               className,
               classType,
               classStatus,
-              classStartDate,
               duration,
             } = oneClass;
+
+            var {classStartDate } = oneClass;
+            classStartDate = classStartDate.toLocaleString("en-GB");
+            console.log("date test: ", classStartDate)
 
             return (
               <li key={index} className="border-for-li two-row-grid">
                 <div>
-                  <h3>
-                    {" "}
-                    <strong> {className} </strong>{" "}
-                  </h3>
+                  <h3> <strong> {className} </strong> </h3>
                   <p>Activity: {classType}</p>
                   <p>Status: {classStatus}</p>
-                  <p>Data: {classStartDate}</p>
+                  <p>Date: {classStartDate}</p>
                   <p>Duration: {duration} min</p>
                 </div>
                 <div className="one-class-dashboard-buttons">

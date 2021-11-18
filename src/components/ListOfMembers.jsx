@@ -1,6 +1,7 @@
 import Button from "@mui/material/Button";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 export default function ListOfMembers(props) {
   const { members, setMembers, setMemberToProcess } = props;
@@ -14,10 +15,23 @@ export default function ListOfMembers(props) {
     navigate("/create-member");
   };
 
+  const { memberId } = useParams();
+
+  console.log("memberId: ", memberId);
+
+  const foundMember = members.find((member) => {
+    
+      return member.id === parseInt(memberId)
+    })
+    console.log("foundmember: ", foundMember)
+
   const handleMemberToView = (event, member) => {
     setMemberToProcess(member);
-    navigate("/view-member")
+    navigate(`members/view/${memberId}`);
   };
+
+    
+
 
   const handleDelete = (event, member) => {
 
@@ -61,14 +75,11 @@ export default function ListOfMembers(props) {
                 <div className="align-end">
                   <Button
                     variant="text"
-                    // variant="outlined"
-                    // color="secondary"
                     onClick={(e) => handleMemberToView(e, member)}
                   > VIEW
                   </Button>
                   <Button
                     color="error"
-                    // variant="text"
                     variant="outlined"
                     onClick={(e) => handleDelete(e, member)}
                   > 🗑 
