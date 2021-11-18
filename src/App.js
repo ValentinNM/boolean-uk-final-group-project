@@ -23,7 +23,10 @@ export default function App() {
   const [trainerToView, setTrainerToView] = useState([])
   const [profile, setProfile] = useState([])
   const [address, setAddress] = useState([])
+  const [classToProcess, setClassToProcess] = useState([]) // to be used for viewClass
 
+  console.log("classToProcess:", classToProcess)
+  
   const API_URL = process.env.REACT_APP_API_URL;
 
   function fetchClasses() {
@@ -83,18 +86,20 @@ export default function App() {
         <Route path="/" element={<HomePage trainers={trainers}
           setTrainers={setTrainers}
           classes={classes}
+          setClasses={setClasses}
           members={members}
           setMembers={setMembers}
           setMemberToProcess={setMemberToProcess}
           memberToProcess={memberToProcess}
           trainerToView={trainerToView}
           setTrainerToView={setTrainerToView}
+          setClassToProcess={setClassToProcess}
         />} />
         <Route path="/create-class" element={<CreateClassForm classes={classes} setClasses={setClasses} />} />
         <Route path="/create-member" element={<CreateMember members={members} setMembers={setMembers}  />} />
         <Route path="/view-member" element={<ViewMember memberToProcess={memberToProcess} setMembers={setMembers} members={members} />} />
         <Route path="/edit-member" element={<EditMemberForm memberToProcess={memberToProcess} members={members} setMembers={setMembers} />} />
-        <Route path="/classes" element={<ListOfClasses classes={classes} />} />
+        <Route path="/classes" element={<ListOfClasses classes={classes} setClassToProcess={setClassToProcess} setClasses={setClasses}/>} />
         <Route path="/trainers" element={<ListOfTrainers setTrainers={setTrainers} trainers={trainers} />} />
         <Route path="/create-trainer" element={<CreateTrainerForm trainers={trainers} setTrainers={setTrainers} />} />
         <Route path="/classes/:classId/editclass" element={<EditClassForm classes={classes} setClasses={setClasses} trainers={trainers} setTrainers={setTrainers} />} />

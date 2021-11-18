@@ -103,9 +103,13 @@ export default function EditClassForm(props) {
     };
 
     return (
-        <>
+        <section className="center-style-member-forms">
+            <div className="padding-bottom available-classes">
             <h2>Edit Class</h2>
-            <form onSubmit={handleSubmit} className="form-stack light-shadow center form-stack">
+            </div>
+
+
+            <form onSubmit={handleSubmit} className="form-stack">
                 <label htmlFor="">Class Name: </label>
                 <input
                     onChange={handleClassName}
@@ -151,6 +155,6 @@ export default function EditClassForm(props) {
         </button>
                 <button onClick={handleDelete}>Delete Class</button>
             </form>
-        </>
+            </section>
     )
 }

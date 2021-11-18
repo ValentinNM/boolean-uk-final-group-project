@@ -15,8 +15,8 @@ export default function ListOfMembers(props) {
   };
 
   const handleMemberToView = (event, member) => {
-    console.log("handleMemberToView: ", member);
     setMemberToProcess(member);
+    navigate("/view-member")
   };
 
   const handleDelete = (event, member) => {
@@ -60,15 +60,18 @@ export default function ListOfMembers(props) {
                 </div>
                 <div className="align-end">
                   <Button
-                    variant="contained"
+                    variant="text"
+                    // variant="outlined"
+                    // color="secondary"
                     onClick={(e) => handleMemberToView(e, member)}
-                  >
-                    <Link to="/view-member">VIEW</Link>
+                  > VIEW
                   </Button>
                   <Button
-                    variant="container"
+                    color="error"
+                    // variant="text"
+                    variant="outlined"
                     onClick={(e) => handleDelete(e, member)}
-                  >DELETE
+                  > 🗑 
                   </Button>
                 </div>
               </li>
