@@ -69,6 +69,7 @@ export default function CreateClassForm(props) {
                 }
                 console.log("New class", newClass)
                 setClasses([...classes, classToAdd])
+                navigate(`/classes`)
             })
     }
 
