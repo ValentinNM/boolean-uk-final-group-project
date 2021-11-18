@@ -95,7 +95,7 @@ export default function App() {
         <Route path="/view-member" element={<ViewMember memberToProcess={memberToProcess} setMembers={setMembers} members={members} />} />
         <Route path="/edit-member" element={<EditMemberForm memberToProcess={memberToProcess} members={members} setMembers={setMembers} />} />
         <Route path="/classes" element={<ListOfClasses classes={classes} />} />
-        <Route path="/trainers" element={<ListOfTrainers trainers={trainers} />} />
+        <Route path="/trainers" element={<ListOfTrainers setTrainers={setTrainers} trainers={trainers} />} />
         <Route path="/create-trainer" element={<CreateTrainerForm trainers={trainers} setTrainers={setTrainers} />} />
         <Route path="/classes/:classId/editclass" element={<EditClassForm classes={classes} setClasses={setClasses} trainers={trainers} setTrainers={setTrainers} />} />
         <Route path="/members" element={<ListOfMembers members={members} setMembers={setMembers} setMemberToProcess={setMemberToProcess} />} />

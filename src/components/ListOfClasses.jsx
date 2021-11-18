@@ -9,10 +9,22 @@ export default function ListOfClasses(props) {
 
   const navigate = useNavigate();
 
+  const jump = (event) => {
+    event.preventDefault();
+    navigate("/create-class");
+  };
+
   return (
     <>
-      <main className="">
-        <h2 className="padding"> Classes</h2>
+      <main >
+        <div className="padding two-column-grid-expand__right">
+        <h2> Classes</h2>
+        <div>
+          <Button onClick={jump} >
+            <strong> ➕ </strong>
+          </Button>
+          </div>
+        </div>
         <ul className="cards padding classes-list">
 
           {props.classes.map((oneClass, index) => {

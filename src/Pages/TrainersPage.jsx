@@ -3,6 +3,8 @@ import Button from "@mui/material/Button";
 export default function TrainersPage(props) {
   const { trainerToView } = props;
 
+  console.log("trainerToView", trainerToView);
+
   const { fullName, speciality, qualification, gender } = trainerToView;
 
   return (

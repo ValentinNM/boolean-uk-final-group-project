@@ -26,7 +26,6 @@ export default function EditMemberForm(props) {
   const API_URL = process.env.REACT_APP_API_URL;
 
   useEffect(() => {
-    // console.log("Inside contact to Edit: ", memberToProcess);
     if (memberToProcess) {
       setUserName(memberToProcess.userName);
       setMembershipType(memberToProcess.membershipType);
@@ -138,12 +137,14 @@ export default function EditMemberForm(props) {
   };
 
   return (
-    <section>
-      <h2>Edit Member Only</h2>
+    <section  className="center-style-member-forms">
+      <div className=" padding-bottom available-classes">
+      <h2>Edit Member</h2>
+      </div>
+
       <div>
         <Box
           onSubmit={handleSubmit}
-          className="form-stack light-shadow center form-stack"
           component="form"
           sx={{
             "& .MuiTextField-root": { m: 1, width: "25ch" },
