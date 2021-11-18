@@ -111,7 +111,6 @@ select {
   background: linear-gradient(to right, #FFFFFF, #6DD5FA, #2980B9); 
   background: linear-gradient(to right, #E1F5C4, #EDE574); */
   background: linear-gradient(to right, #7AA1D2, #DBD4B4, #CC95C0);
-
 }
 
 .header {
@@ -256,8 +255,8 @@ select {
   padding: 10px;
 }
 
-/* .padding-left{
-  padding-left: 10x;
+.padding-bottom{ 
+  padding-bottom: 20px;
 }
 
 /* member */
@@ -292,3 +291,14 @@ select {
   place-items: center;
 }
 
+.center-style-member-forms {
+  border: 1px solid rgb(17, 1, 1);
+  border-radius: 8px;
+  max-width: 60ch;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1rem;
+  border-radius: 1rem;
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+}

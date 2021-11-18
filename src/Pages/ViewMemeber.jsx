@@ -5,23 +5,21 @@ export default function ViewMember(props) {
 
   const { memberToProcess, setMembers, members } = props;
 
-  console.log("VIEW memberToProcess: ", memberToProcess)
-
   const API_URL = process.env.REACT_APP_API_URL;
 
-  const { userName, membershipType, membershipStatus, profile, id } = memberToProcess;
+  const { userName, membershipType, membershipStatus, profile, id, classes } = memberToProcess;
   const { firstName, lastname, address } = profile;
   const { city, country, houseNumber, postcode, streetName } = address;
 
   const handleDelete = (event) => {
-    console.log("member id : ", id);
     fetch(`${API_URL}/members/${id}`,({ method: "DELETE" }))
     .then((res) => res.json())
-    .then((response) => { 
+    .then( () => { 
 
+      const removeDeletedMember = members.filter((m) => m.id !== id )
+
+      setMembers([...removeDeletedMember]);
     })
-    
-    setMembers(members)
   }
 
   return (
@@ -65,9 +63,6 @@ export default function ViewMember(props) {
               </Link>
                </Button>
           </div>
-          {/* <Button variant="container">
-              <Link to="/">Back To Home</Link>   // already having the header to take us home
-            </Button> */}
         </li>
       </ul>
     </section>

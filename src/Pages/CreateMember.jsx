@@ -4,7 +4,9 @@ import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 
 export default function CreateMember(props) {
-  const { API_URL, members, setMembers } = props;
+  const { members, setMembers } = props;
+
+  const API_URL = process.env.REACT_APP_API_URL;
 
   const [memberToCreate, setMemberToCreate] = useState({
     userName: "",
@@ -58,10 +60,8 @@ const [addressToCreate, setAddressToCreate] = useState({
 
   const handleInput = (event) => {
     const inputName = event.target.name;
-    console.log("inputName: ", event.target.name);
 
     const inputValue = event.target.value;
-    console.log("inputValue: ", event.target.value);
 
     setMemberToCreate({
       ...memberToCreate,
@@ -80,22 +80,14 @@ const [addressToCreate, setAddressToCreate] = useState({
   };
 
   return (
-    <section className="two-column-grid-forms">
-      <div className="available-classes">
-        <h2>Available Classes: </h2>
-        <ul>
-          <li className="two-column-grid-expand__right">
-            <div></div>
-            <div>
-              <Button variant="contained">Enroll</Button>
-            </div>
-          </li>
-        </ul>
+    // <section className="center-style background">
+    <section className="center-style-member-forms">
+      <div className=" padding-bottom available-classes">
+        <h2> Enroll member </h2>
       </div>
-      <div>
         <Box
           onSubmit={handleSubmit}
-          className=" two-column-grid-expand__right"
+          // className="two-column-grid-expand__right"
           component="form"
           sx={{
             "& .MuiTextField-root": { m: 1, width: "25ch" },
@@ -103,6 +95,9 @@ const [addressToCreate, setAddressToCreate] = useState({
           noValidate
           autoComplete="of"
         >
+          <div className="two-column-grid-expand__right">
+          <div className="two-combined">
+           <h3>Required *</h3>
           <TextField
             onChange={handleInput}
             type="text"
@@ -118,7 +113,6 @@ const [addressToCreate, setAddressToCreate] = useState({
             name="membershipType"
             label="Memebership Type"
           />
-          {/* might be worth making this dropdown SELECT option */}
           <TextField
             required
             onChange={handleInput}
@@ -126,25 +120,24 @@ const [addressToCreate, setAddressToCreate] = useState({
             name="membershipStatus"
             label="Status"
           />
-          <div>
-            <h3>Profile Details:</h3>
+            <h3>Profile: </h3>
             <TextField
               required
               onChange={handleInput}
               id="outlined-required"
               name="firstName"
               label="First Name"
-            />
+              />
             <TextField
               required
               onChange={handleInput}
               id="outlined-required"
               name="lastname"
               label="Last Name"
-            />
-          </div>
-          <div>
-            <h3>Address Details: </h3>
+              />
+            </div>
+            <div className="address">
+            <h3>Address: </h3>
             <TextField
               required
               onChange={handleInput}
@@ -181,13 +174,13 @@ const [addressToCreate, setAddressToCreate] = useState({
               label="Country"
             />
           </div>
-          <div>
+          </div>
+          <div className="align-end">
             <Button variant="contained" type="submit">
               ADD
             </Button>
           </div>
         </Box>
-      </div>
     </section>
   );
 }
