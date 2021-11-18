@@ -4,21 +4,35 @@ import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 
 export default function EditMemberForm(props) {
-  console.log("Inside props ", props);
   const { memberToProcess, members, setMembers } = props;
+  console.log(" EditMemberForm memberToProcess ", memberToProcess);
+
+  const { profile } = memberToProcess;
+  const { address} = profile;
+  const { houseNumber, streetName, city, postcode, country } = address;
 
   const [userName, setUserName] = useState("");
   const [membershipType, setMembershipType] = useState("");
   const [membershipStatus, setMembershipStatus] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastname, setLastname] = useState("");
+  const [pictureToEdit, setPictureToEdit] = useState("");
+  const [houseNumberToEdit, setHouseNumberToEdit] = useState(houseNumber);
+  const [streetNameToEdit, setStreetNameToEdit] = useState(streetName);
+  const [cityToEdit, setCityToEdit] = useState(city);
+  const [postcodeToEdit, setPostcodeToEdit] = useState(postcode);
+  const [countryToEdit, setCountryToEdit] = useState(country);
 
   const API_URL = process.env.REACT_APP_API_URL;
 
   useEffect(() => {
-    console.log("Inside contact to Edit: ", memberToProcess);
+    // console.log("Inside contact to Edit: ", memberToProcess);
     if (memberToProcess) {
       setUserName(memberToProcess.userName);
       setMembershipType(memberToProcess.membershipType);
       setMembershipStatus(memberToProcess.membershipStatus);
+      setFirstName(memberToProcess.firstName);
+      setLastname( memberToProcess.lastname);
     }
   }, [memberToProcess]);
 
@@ -37,6 +51,46 @@ export default function EditMemberForm(props) {
     setMembershipStatus(event.target.value);
   };
 
+  const handleFirstName = (event) => {
+    console.log("Inside handlers ", event.target.value);
+    setFirstName(event.target.value);
+  };
+
+  const handleLastName = (event) => {
+    console.log("Inside handlers ", event.target.value);
+    setLastname(event.target.value);
+  };
+
+  const handlePicture = (event) => {
+    console.log("Inside handlers ", event.target.value);
+    setPictureToEdit(event.target.value);
+  };
+
+  const handleHouseNumber = (event) => {
+    console.log("Inside handlers ", event.target.value);
+    setHouseNumberToEdit(event.target.value);
+  };
+
+  const handleStreetName = (event) => {
+    console.log("Inside handlers ", event.target.value);
+    setStreetNameToEdit(event.target.value);
+  };
+
+  const handleCity = (event) => {
+    console.log("Inside handlers ", event.target.value);
+    setCityToEdit(event.target.value);
+  };
+
+  const handlePostcode = (event) => {
+    console.log("Inside handlers ", event.target.value);
+    setPostcodeToEdit(event.target.value);
+  };
+
+  const handleCountry = (event) => {
+    console.log("Inside handlers ", event.target.value);
+    setCountryToEdit(event.target.value);
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
 
@@ -44,6 +98,18 @@ export default function EditMemberForm(props) {
       userName,
       membershipType,
       membershipStatus,
+      profile: {
+        firstName,
+        lastname,
+        picture: "",
+        address: {
+          houseNumber,
+          streetName,
+          city,
+          postcode,
+          country,
+        },
+      },
     };
     const fetchMemberToUpdate = {
       method: "PATCH",
@@ -75,109 +141,110 @@ export default function EditMemberForm(props) {
     <section>
       <h2>Edit Member Only</h2>
       <div>
-      <Box
-        onSubmit={handleSubmit}
-        className="form-stack light-shadow center form-stack"
-      component="form"
-      sx={{
-        "& .MuiTextField-root": { m: 1, width: "25ch" },
-      }}
-      noValidate
-      autoComplete="of"
-    >
-      <TextField
-       type="text"
-          id="userName"
-          name="userName"
-          value={userName}
-          onChange={handleUserName}
-       label="Username"
-      />
-      <TextField
-     type="text"
-id="membershipType"
-name="membershipType"
-value={membershipType}
-onChange={handleMembershipType}
-      />
-      <TextField
-type="text"
-id="membershipStatus"
-name="membershipStatus"
-value={membershipStatus}
-onChange={handleMembershipStatus}
-      />
-      <div>
-        <h3>Profile Details:</h3>
-      <TextField
-        required
-        // onChange={}
-        id="outlined-required"
-        label="First Name"
-        // defaultValue={}
-        // value={}
-        />
-      <TextField
-        required
-        // onChange={}
-        id="outlined-required"
-        label="Last Name"
-        // defaultValue={}
-        // value={}
-        />
+        <Box
+          onSubmit={handleSubmit}
+          className="form-stack light-shadow center form-stack"
+          component="form"
+          sx={{
+            "& .MuiTextField-root": { m: 1, width: "25ch" },
+          }}
+          noValidate
+          autoComplete="of"
+        >
+          <TextField
+            type="text"
+            id="userName"
+            name="userName"
+            value={userName}
+            onChange={handleUserName}
+            label="Username"
+          />
+          <TextField
+            type="text"
+            id="membershipType"
+            name="membershipType"
+            value={membershipType}
+            onChange={handleMembershipType}
+          />
+          <TextField
+            type="text"
+            id="membershipStatus"
+            name="membershipStatus"
+            value={membershipStatus}
+            onChange={handleMembershipStatus}
+          />
+          <div>
+            <h3>Profile Details:</h3>
+            <TextField
+              required
+              label="First Name"
+              name="firstName"
+              value={profile.firstName}
+              onChange={handleFirstName}
+            />
+            <TextField
+              required
+              id="outlined-required"
+              label="Last Name"
+              name="lastname"
+              value={profile.lastname}
+              onChange={handleLastName}
+            />
+          </div>
+          <div>
+            <h3>Address Details: </h3>
+            <TextField
+              required
+              id="outlined-required"
+              label="House No"
+              name="houseNumber"
+              value={address.houseNumber}
+              onChange={handleHouseNumber}
+            />
+            <TextField
+              required
+              id="outlined-required"
+              label="Street"
+              name="streetName"
+              value={address.streetName}
+              onChange={handleStreetName}
+            />
+            <TextField
+              required
+              id="outlined-required"
+              label="City"
+              name="city"
+              value={address.city}
+              onChange={handleCity}
+            />
+            <TextField
+              required
+              id="outlined-required"
+              label="POSTCODE"
+              name="postcode"
+              value={address.postcode}
+              onChange={handlePostcode}
+            />
+            <TextField
+              required
+              id="outlined-required"
+              label="Country"
+              name="country"
+              value={address.country}
+              onChange={handleCountry}
+            />
+          </div>
+        </Box>
       </div>
-      <div>
-          <h3>Address Details: </h3>
-      <TextField
-        required
-        // onChange={}
-        id="outlined-required"
-        label="House No"
-        // defaultValue={}
-        // value={}
-        />
-      <TextField
-        required
-        // onChange={}
-        id="outlined-required"
-        label="Street"
-        // defaultValue={}
-        // value={}
-        />
-      <TextField
-        required
-        // onChange={}
-        id="outlined-required"
-        label="City"
-        // defaultValue={}
-        // value={}
-        />
-      <TextField
-        required
-        // onChange={}
-        id="outlined-required"
-        label="POSTCODE"
-        // defaultValue={}
-        // value={}
-        />
-      <TextField
-        required
-        // onChange={}
-        id="outlined-required"
-        label="Country"
-        // defaultValue={}
-        // value={}
-        />
-    </div>
-    </Box>
-  </div>
-  <div className="grid-gap">
-    <Button variant="contained"
-    // onClick={handleSubmit}
-    type="submit">
-      UPDATE
-    </Button>
-  </div>
+      <div className="grid-gap">
+        <Button
+          variant="contained"
+          // onClick={handleSubmit}
+          type="submit"
+        >
+          UPDATE
+        </Button>
+      </div>
     </section>
   );
 }

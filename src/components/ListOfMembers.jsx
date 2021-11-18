@@ -1,10 +1,18 @@
 import Button from "@mui/material/Button";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function ListOfMembers(props) {
   const { members, setMembers, setMemberToProcess } = props;
 
   const API_URL = process.env.REACT_APP_API_URL;
+
+  const navigate = useNavigate();
+
+  const jump = (event) => {
+    event.preventDefault();
+    navigate("/create-member");
+  };
 
   const handleMemberToView = (event, member) => {
     console.log("handleMemberToView: ", member);
@@ -16,7 +24,7 @@ export default function ListOfMembers(props) {
     setMemberToProcess(member)
     console.log("member : ", member);
     fetch(`${API_URL}/members/${member.id}`, { method: "DELETE" })
-    .then( () => { 
+    .then(() => { 
 
       const removeDeletedMember = members.filter((m) => m.id !== member.id )
 
@@ -27,7 +35,14 @@ export default function ListOfMembers(props) {
   return (
     <>
       <section>
-        <h2 className="padding">List Of Members</h2>
+        <div className="padding two-column-grid-expand__right">
+          <h2 className=""> Members </h2>
+          <div>
+          <Button onClick={jump} >
+            <strong> ➕ </strong>
+          </Button>
+          </div>
+          </div>
         <ul className=" padding members-list">
           {members.map((member, index) => {
             const { userName, membershipType, membershipStatus} = member;

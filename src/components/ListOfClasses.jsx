@@ -12,7 +12,7 @@ export default function ListOfClasses(props) {
   return (
     <>
       <main className="">
-        <h2 className="padding"> List Of Classes</h2>
+        <h2 className="padding"> Classes</h2>
         <ul className="cards padding classes-list">
 
           {props.classes.map((oneClass, index) => {

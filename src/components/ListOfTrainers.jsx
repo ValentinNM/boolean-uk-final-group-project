@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 export default function ListOfTrainers(props) {
   return (
     <>
-      <h2 className="padding" >List Of Trainers</h2>
+      <h2 className="padding" > Trainers </h2>
       <ul className="padding trainers-list ">
         {props.trainers.map((trainer, index) => {
               const { fullName, speciality, qualification, gender} = trainer
