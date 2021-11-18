@@ -102,7 +102,7 @@ select {
   max-height: 100vh;
   display: grid;
   grid-template:
-    "header header header header header" 75px
+    /* "header header header header header" 75px */
     ". left-aside main right-aside ." 1fr /
     0.125fr 1fr 2fr 1fr 0.125fr;
   gap: 5px; 

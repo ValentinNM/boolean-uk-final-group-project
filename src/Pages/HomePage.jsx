@@ -2,12 +2,11 @@ import ListOfTrainers from "../components/ListOfTrainers"
 import CreateTrainerForm from "../Pages/CreateTrainerForm"
 import ListOfClasses from "../components/ListOfClasses"
 import ListOfMembers from "../components/ListOfMembers"
-import Header from "../components/Header"
 // import ViewMember from "../Pages/ViewMemeber"
 
 export default function HomePage(props) {
 
-    const { trainers, setTrainers, classes, members, setMemberToView, memberToView } = props
+    const { trainers, setTrainers, classes, members, setMemberToProcess, memberToProcess } = props
 
 
     return (
@@ -24,8 +23,8 @@ export default function HomePage(props) {
                 </main>
 
                 <aside className="right-aside">
-                    <ListOfMembers members={members} setMemberToView={setMemberToView} />
-                    {/* <ViewMember memberToView={memberToView} /> */}
+                    <ListOfMembers members={members} memberToProcess={memberToProcess} setMemberToProcess={setMemberToProcess} />
+                    {/* <ViewMember memberToProcess={memberToProcess} /> */}
 
                 </aside>
             </div>
