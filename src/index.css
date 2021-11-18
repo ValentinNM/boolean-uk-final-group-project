@@ -302,3 +302,8 @@ select {
   margin-top: 3rem;
   margin-bottom: 1rem;
 }
+
+.align-buttons-end { 
+  display: flex;
+  justify-content: flex-end;
+}

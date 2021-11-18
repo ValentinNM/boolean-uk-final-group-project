@@ -1,11 +1,15 @@
-import { Link } from "react-router-dom";
 import Button from "@mui/material/Button";
+import { useNavigate } from "react-router-dom";
+
 export default function TrainersPage(props) {
   const { trainerToView } = props;
-
-  console.log("trainerToView", trainerToView);
+  const navigate = useNavigate();
 
   const { fullName, speciality, qualification, gender } = trainerToView;
+
+  const jumpToHome = (event) => { 
+    navigate("/")
+  }
 
   return (
     <>
@@ -13,13 +17,17 @@ export default function TrainersPage(props) {
       <ul className="center-style">
         <li>
           <p>
-            <strong>Name :</strong> {fullName}
+            <strong> {fullName} </strong>
+            <hr />
           </p>
           <p>Speciality: {speciality}</p>
           <p>Qualification: {qualification}</p>
           <p>Gender: {gender}</p>
-          <Button variant="container">
-              <Link to="/">Back To Home</Link>
+          <Button 
+          variant="text"
+          color="secondary"
+          onClick={jumpToHome}
+            > 🏠 🔙 
             </Button>
         </li>
       </ul>

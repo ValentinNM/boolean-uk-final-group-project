@@ -1,15 +1,31 @@
-import { Link } from "react-router-dom";
 import Button from "@mui/material/Button";
+import { useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 export default function ViewMember(props) {
 
   const { memberToProcess, setMembers, members } = props;
-
+  
   const API_URL = process.env.REACT_APP_API_URL;
+
+  const navigate = useNavigate();
+  
+  const { memberId } = useParams();
+
+  const foundMember = members.find((member) => {
+    
+      return member.id === parseInt(memberId)
+    })
+    console.log("foundmember: ", foundMember)
+
+    const jumpToEditMember = () => {
+      navigate(`members/edit/${memberId}`);
+    };
 
   const { userName, membershipType, membershipStatus, profile, id, classes } = memberToProcess;
   const { firstName, lastname, address } = profile;
   const { city, country, houseNumber, postcode, streetName } = address;
+
 
   const handleDelete = (event) => {
     fetch(`${API_URL}/members/${id}`,({ method: "DELETE" }))
@@ -19,6 +35,8 @@ export default function ViewMember(props) {
       const removeDeletedMember = members.filter((m) => m.id !== id )
 
       setMembers([...removeDeletedMember]);
+
+      navigate("/");
     })
   }
 
@@ -48,19 +66,19 @@ export default function ViewMember(props) {
           </div>
             </div>
             <div className="member-avatar">
-                <img src={profile.picture} alt="member-avatar" />
+                <img src={profile.picture} alt="member-avatar"/>
             </div>
           <div className="one-class-dashboard-buttons">
-            <Button variant="container">
-              <Link to="/edit-member">EDIT</Link>
+            <Button variant="outlined"
+              onClick={jumpToEditMember}
+            >
+                EDIT
             </Button>
-            <Button variant="container"
-            // onClick={(e)=> handleDelete(e, memberToProcess)}
+            <Button variant="text"
+            color="secondary"
             onClick={handleDelete}
             >
-              <Link to="/">
-               DELETE 
-              </Link>
+               🗑
                </Button>
           </div>
         </li>
