@@ -11,12 +11,12 @@ export default function EditMemberForm(props) {
   const { address} = profile;
   const { houseNumber, streetName, city, postcode, country } = address;
 
-  const [userName, setUserName] = useState("");
-  const [membershipType, setMembershipType] = useState("");
-  const [membershipStatus, setMembershipStatus] = useState("");
-  const [firstName, setFirstName] = useState("");
-  const [lastname, setLastname] = useState("");
-  const [pictureToEdit, setPictureToEdit] = useState("");
+  const [userName, setUserName] = useState(memberToProcess.userName);
+  const [membershipType, setMembershipType] = useState(memberToProcess.membershipType);
+  const [membershipStatus, setMembershipStatus] = useState(memberToProcess.membershipStatus);
+  const [firstName, setFirstName] = useState(memberToProcess.profile.firstName);
+  const [lastname, setLastname] = useState(memberToProcess.profile.lastname);
+  const [pictureToEdit, setPictureToEdit] = useState(memberToProcess.profile.picture);
   const [houseNumberToEdit, setHouseNumberToEdit] = useState(houseNumber);
   const [streetNameToEdit, setStreetNameToEdit] = useState(streetName);
   const [cityToEdit, setCityToEdit] = useState(city);
@@ -25,15 +25,15 @@ export default function EditMemberForm(props) {
 
   const API_URL = process.env.REACT_APP_API_URL;
 
-  useEffect(() => {
-    if (memberToProcess) {
-      setUserName(memberToProcess.userName);
-      setMembershipType(memberToProcess.membershipType);
-      setMembershipStatus(memberToProcess.membershipStatus);
-      setFirstName(memberToProcess.firstName);
-      setLastname( memberToProcess.lastname);
-    }
-  }, [memberToProcess]);
+  // useEffect(() => {
+  //   if (memberToProcess) {
+  //     // setUserName(memberToProcess.userName);
+  //     setMembershipType(memberToProcess.membershipType);
+  //     setMembershipStatus(memberToProcess.membershipStatus);
+  //     setFirstName(memberToProcess.firstName);
+  //     setLastname( memberToProcess.lastname);
+  //   }
+  // }, [memberToProcess]);
 
   const handleUserName = (event) => {
     console.log("Inside handlers ", event.target.value);
@@ -102,11 +102,11 @@ export default function EditMemberForm(props) {
         lastname,
         picture: "",
         address: {
-          houseNumber,
-          streetName,
-          city,
-          postcode,
-          country,
+          houseNumber: houseNumberToEdit,
+          streetName: streetNameToEdit,
+          city: cityToEdit,
+          postcode: postcodeToEdit,
+          country: countryToEdit,
         },
       },
     };
@@ -129,7 +129,7 @@ export default function EditMemberForm(props) {
               ...updatedMember,
             };
           } else {
-            return member;
+            return;
           }
         });
         setMembers(membershipUpdate);
@@ -144,7 +144,7 @@ export default function EditMemberForm(props) {
 
       <div>
         <Box
-          onSubmit={handleSubmit}
+          // onSubmit={handleSubmit}
           component="form"
           sx={{
             "& .MuiTextField-root": { m: 1, width: "25ch" },
@@ -182,7 +182,7 @@ export default function EditMemberForm(props) {
               required
               label="First Name"
               name="firstName"
-              value={profile.firstName}
+              value={firstName}
               onChange={handleFirstName}
             />
             <TextField
@@ -190,7 +190,7 @@ export default function EditMemberForm(props) {
               id="outlined-required"
               label="Last Name"
               name="lastname"
-              value={profile.lastname}
+              value={lastname}
               onChange={handleLastName}
             />
           </div>
@@ -201,7 +201,7 @@ export default function EditMemberForm(props) {
               id="outlined-required"
               label="House No"
               name="houseNumber"
-              value={address.houseNumber}
+              value={houseNumberToEdit}
               onChange={handleHouseNumber}
             />
             <TextField
@@ -209,7 +209,7 @@ export default function EditMemberForm(props) {
               id="outlined-required"
               label="Street"
               name="streetName"
-              value={address.streetName}
+              value={streetNameToEdit}
               onChange={handleStreetName}
             />
             <TextField
@@ -217,7 +217,7 @@ export default function EditMemberForm(props) {
               id="outlined-required"
               label="City"
               name="city"
-              value={address.city}
+              value={cityToEdit}
               onChange={handleCity}
             />
             <TextField
@@ -225,7 +225,7 @@ export default function EditMemberForm(props) {
               id="outlined-required"
               label="POSTCODE"
               name="postcode"
-              value={address.postcode}
+              value={postcodeToEdit}
               onChange={handlePostcode}
             />
             <TextField
@@ -233,7 +233,7 @@ export default function EditMemberForm(props) {
               id="outlined-required"
               label="Country"
               name="country"
-              value={address.country}
+              value={countryToEdit}
               onChange={handleCountry}
             />
           </div>
@@ -242,7 +242,7 @@ export default function EditMemberForm(props) {
       <div className="grid-gap">
         <Button
           variant="contained"
-          // onClick={handleSubmit}
+          onClick={handleSubmit}
           type="submit"
         >
           UPDATE

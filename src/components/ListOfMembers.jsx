@@ -27,7 +27,7 @@ export default function ListOfMembers(props) {
 
   const handleMemberToView = (event, member) => {
     setMemberToProcess(member);
-    navigate(`members/view/${memberId}`);
+    navigate(`members/view/${member.id}`);
   };
 
     
