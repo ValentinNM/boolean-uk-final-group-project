@@ -99,7 +99,7 @@ select {
 }
 
 .grid-container {
-  max-height: 100vh;
+  height: auto;
   display: grid;
   grid-template:
     /* "header header header header header" 75px */
