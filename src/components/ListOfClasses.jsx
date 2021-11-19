@@ -22,9 +22,8 @@ export default function ListOfClasses(props) {
     <>
       <h2 className="padding-left"> List Of Classes</h2>
       <form className="filter-form">
-        <label htmlFor="filter-by-classType">
-          <h3>Activity</h3>
-        </label>
+      <div className="two-column-grid-expand__right">
+      <h3>Class Activity</h3>
         <select
           name="fiter-by-activity"
           id="filter-by-activity"
@@ -34,10 +33,11 @@ export default function ListOfClasses(props) {
            {
             classes.map((classe, index) => {
     return (
-      <option key={index} value={classe.classType}>Class Type: {classe.classType}</option>
+      <option key={index} value={classe.classType}>Class Type 🔎 {classe.classType}</option>
     )})
           }
         </select>
+        </div>
       </form>
       <main className="">
         <ul className="cards padding classes-list">
