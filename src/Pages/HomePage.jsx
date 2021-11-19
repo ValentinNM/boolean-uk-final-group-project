@@ -3,6 +3,7 @@ import CreateTrainerForm from "../Pages/CreateTrainerForm"
 import ListOfClasses from "../components/ListOfClasses"
 import ListOfMembers from "../components/ListOfMembers"
 import { useNavigate } from "react-router-dom";
+import FilterClassByType from "./FilterClassByType";
 
 export default function HomePage(props) {
 
@@ -15,7 +16,7 @@ export default function HomePage(props) {
         setMembers,
         setTrainerToView,
         setClassToProcess,
-        setClasses={setClasses}
+        setClasses,
     } = props
 
     const navigate = useNavigate();
@@ -35,6 +36,7 @@ export default function HomePage(props) {
 
                 <aside className="right-aside">
                     <ListOfMembers members={members} memberToProcess={memberToProcess} setMembers={setMembers} setMemberToProcess={setMemberToProcess} />
+                    <FilterClassByType classes={classes} setClasses={setClasses} />
                 </aside>
             </div>
         </>

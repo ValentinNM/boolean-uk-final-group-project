@@ -139,6 +139,17 @@ select {
  display: none;
 }
 
+.filters-list::-webkit-scrollbar{ /* removes the scrollbar, though still scrolable */
+ display: none;
+}
+
+.filters-list {
+  display: grid;
+  max-height: 30vh ;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
 .add-trainer{
   display: grid;
   max-height: 30vh ;
@@ -177,8 +188,15 @@ select {
   grid-area: right-aside;
 }
 .members-list { 
-  display: grid;
+  /* display: grid;
   max-height: 87vh ;
+  overflow-x: hidden;
+  overflow-y: auto;
+  margin-bottom: 15px;
+  gap:10px; */
+
+  display: grid;
+  max-height: 60vh ;
   overflow-x: hidden;
   overflow-y: auto;
   margin-bottom: 15px;
