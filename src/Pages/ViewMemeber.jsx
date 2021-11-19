@@ -42,27 +42,28 @@ export default function ViewMember(props) {
 
   return (
     <section className="all-member-details-container center-style two-column-grid-forms">
+      <h3>Member Details</h3>
       <ul>
         <li className ="two-column-grid-expand__right">
             <div className="view-member-details">
           <div className="member-main-details">
-            <h1>Member details</h1>
-            <h1> Username: {userName} </h1>
-            <h1> First Name: {firstName} </h1>
-            <h1> Last Name: {lastname} </h1>
+            <h3>Member details</h3>
+            <h4> Username: {userName} </h4>
+            <h4> First Name: {firstName} </h4>
+            <h4> Last Name: {lastname} </h4>
           </div>          
           <div className="profile">
-            <h1>Membership: </h1>
-            <h1>Membership: {membershipType} </h1>
-            <h1>Status: {membershipStatus} </h1>
+            <h4>Membership: </h4>
+            <h4>Membership: {membershipType} </h4>
+            <h4>Status: {membershipStatus} </h4>
           </div>
           <div className="address">
-            <h1>Address: </h1>
-            <h1> Property No: {houseNumber} </h1>
-            <h1> Street: {streetName} </h1>
-            <h1> City: {city} </h1>
-            <h1> Postcode: {postcode} </h1>
-            <h1> Country: {country} </h1>
+            <h4>Address: </h4>
+            <h4> Property No: {houseNumber} </h4>
+            <h4> Street: {streetName} </h4>
+            <h4> City: {city} </h4>
+            <h4> Postcode: {postcode} </h4>
+            <h4> Country: {country} </h4>
           </div>
             </div>
             <div className="member-avatar">
