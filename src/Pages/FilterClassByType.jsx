@@ -11,7 +11,11 @@ export default function FilterClassByType(props) {
   
   const handleChange = (event, oneClass) => {
       
-      if(event.target.checked !== null) {
+    // need to get the value of classType from the event
+    // and store that in a new array which will be used to
+    // filter the classes, and get a new array of classes filtered by type
+      if(event.target.checked !== false) {
+          console.log("checked: ", event.target.checked);
           setFilter([...filter,
             oneClass]);    
         } else {  
@@ -62,7 +66,6 @@ export default function FilterClassByType(props) {
             return (
               <li>
                 <FormControlLabel
-
                   key={index}
                   control={<Checkbox id="verify"/>}
                   label={classType}

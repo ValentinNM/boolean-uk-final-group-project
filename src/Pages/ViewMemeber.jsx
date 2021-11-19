@@ -19,7 +19,7 @@ export default function ViewMember(props) {
     console.log("foundmember: ", foundMember)
 
     const jumpToEditMember = () => {
-      navigate(`members/edit/${memberId}`);
+      navigate(`/members/edit/${memberId}`);
     };
 
   const { userName, membershipType, membershipStatus, profile, id, classes } = memberToProcess;
